@@ -1,0 +1,265 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f7fa;
+    color: #333;
+}
+
+main {
+    max-width: 1400px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.page-title {
+    margin-bottom: 30px;
+    padding: 15px 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.page-title h1 {
+    margin: 0;
+    color: #2c3e50;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.page-title h1 i {
+    color: #7e4ba0;
+}
+
+.content-container {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.section {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.section-header {
+    margin-bottom: 20px;
+}
+
+.section-header h2 {
+    color: #2c3e50;
+    font-size: 20px;
+    margin: 0 0 10px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.section-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.feature-step {
+    display: flex;
+    gap: 15px;
+}
+
+.step-icon {
+    width: 40px;
+    height: 40px;
+    background-color: #7e4ba0;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.step-icon i {
+    font-size: 18px;
+}
+
+.step-content {
+    flex: 1;
+}
+
+.step-content h3 {
+    color: #2c3e50;
+    font-size: 16px;
+    margin: 0 0 8px 0;
+}
+
+.step-content p {
+    color: #333;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.important-info {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+.info-icon {
+    width: 40px;
+    height: 40px;
+    background-color: #ffc107;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.info-icon i {
+    font-size: 18px;
+}
+
+.info-content {
+    flex: 1;
+}
+
+.info-content h3 {
+    color: #2c3e50;
+    font-size: 16px;
+    margin: 0 0 8px 0;
+}
+
+.info-content p {
+    color: #333;
+    margin: 0 0 8px 0;
+    line-height: 1.5;
+}
+
+.info-content ul {
+    padding-left: 20px;
+    margin: 0;
+}
+
+.benefits-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.benefits-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.benefits-list li i {
+    color: #7e4ba0;
+    margin-top: 2px;
+}
+
+#scrollToTopBtn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: #7e4ba0;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: opacity 0.3s;
+    z-index: 1000;
+}
+
+#scrollToTopBtn.show {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    width: 400px;
+    max-width: 90%;
+    position: relative;
+}
+
+.modal-content .close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.modal-content h2 {
+    margin-top: 0;
+    color: #2c3e50;
+}
+
+.modal-content form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.modal-content label {
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.modal-content input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.modal-content button {
+    padding: 10px;
+    background-color: #7e4ba0;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: opacity 0.3s;
+}
+
+.modal-content button:hover {
+    opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+}

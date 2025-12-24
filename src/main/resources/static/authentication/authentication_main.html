@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/repeat style/header_style.css">
+    <link rel="stylesheet" href="../css/repeat style/footer_style.css">
+    <link rel="stylesheet" href="../css/page style/authentication_main.css">
+    <style>
+
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Unified Network</title>
+</head>
+
+<body>
+    <header>
+        <div class="logo-and-name">
+            <img src="../img/logo.svg" alt="logo" class="logo">
+            <span class="title">Unified Network</span>
+        </div>
+        <nav class="nav-bar">
+            <ul>
+                <li><a class="list-bar" href="../material additional/features_authentication.html">Возможности</a></li>
+                <li><a class="list-bar" href="../material additional/about_development_authentication.html">О
+                        разработке</a></li>
+                <li><a class="list-bar" href="../material additional/documentation_authentication.html">Документация</a>
+                </li>
+            </ul>
+        </nav>
+        <div class="language-and-exit">
+            <div class="auth-buttons-wrapper">
+                <button class="auth-button" id="btnLogin">Авторизация</button>
+                <button class="auth-button" id="btnRegister">Регистрация</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Модальное окно авторизации -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" data-close="login">&times;</span>
+            <h2>Авторизация</h2>
+            <form id="loginForm">
+                <label for="loginUsername">Имя пользователя</label>
+                <input type="text" id="loginUsername" name="loginUsername" required>
+                <label for="loginPassword">Пароль</label>
+                <input type="password" id="loginPassword" name="loginPassword" required>
+                <button type="submit">Войти</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Модальное окно регистрации -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close" data-close="register">&times;</span>
+            <h2>Регистрация</h2>
+            <form id="registerForm">
+                <label for="registerUsername">Имя пользователя</label>
+                <input type="text" id="registerUsername" name="registerUsername" required>
+                <label for="registerEmail">Email</label>
+                <input type="email" id="registerEmail" name="registerEmail" required>
+                <label for="registerPassword">Пароль</label>
+                <input type="password" id="registerPassword" name="registerPassword" required>
+                <label for="registerConfirmPassword">Подтвердите пароль</label>
+                <input type="password" id="registerConfirmPassword" name="registerConfirmPassword" required>
+                <button type="submit">Зарегистрироваться</button>
+            </form>
+        </div>
+    </div>
+
+    <main>
+        <div class="page-title">
+            <h1><i class="fas fa-network-wired"></i> Unified Network</h1>
+        </div>
+        <div class="content-container">
+            <!-- О системе -->
+            <section class="section">
+                <div class="section-header">
+                    <h2><i class="fas fa-info-circle"></i> О системе Unified Network</h2>
+                </div>
+                <div class="section-content">
+                    <p>
+                        <strong>Unified Network</strong> — это современное веб-приложение для централизованного
+                        управления ИТ-активами организации.
+                        Система позволяет автоматизировать учёт устройств, программного обеспечения и сетевой
+                        инфраструктуры, обеспечивая прозрачность, контроль и безопасность корпоративных ресурсов.
+                    </p>
+                    <p>
+                        С помощью <strong>Unified Network</strong> вы сможете оперативно добавлять устройства,
+                        отслеживать их статус, управлять установленным ПО и визуализировать сетевую топологию в реальном
+                        времени.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Основные возможности -->
+            <section class="section">
+                <div class="section-header">
+                    <h2><i class="fas fa-cogs"></i> Основные возможности</h2>
+                </div>
+                <div class="section-content">
+                    <p>
+                        <strong>Unified Network</strong> решает ключевые задачи управления ИТ-инфраструктурой:
+                    </p>
+                    <ul class="benefits-list">
+                        <li>
+                            <i class="fas fa-server"></i>
+                            <span><strong>Учёт устройств:</strong> Добавление и классификация устройств по типам
+                                (серверы, рабочие станции, принтеры, маршрутизаторы и др.).</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-chart-line"></i>
+                            <span><strong>Мониторинг статуса:</strong> Отслеживание состояния устройств (онлайн/офлайн),
+                                загрузки процессора, использования памяти и дискового пространства.</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-list-alt"></i>
+                            <span><strong>Учёт программного обеспечения:</strong> Ведение списка установленного ПО для
+                                серверов и рабочих станций, включая версии, издателей и даты установки.</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-network-wired"></i>
+                            <span><strong>Сетевая карта:</strong> Визуализация расположения устройств и их связей в
+                                корпоративной сети.</span>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Преимущества -->
+            <section class="section">
+                <div class="section-header">
+                    <h2><i class="fas fa-star"></i> Преимущества использования</h2>
+                </div>
+                <div class="section-content">
+                    <p>
+                        Внедрение <strong>Unified Network</strong> позволяет:
+                    </p>
+                    <ul class="benefits-list">
+                        <li>
+                            <i class="fas fa-money-bill-wave"></i>
+                            <span><strong>Снизить операционные затраты</strong> за счёт автоматизации учёта и
+                                минимизации избыточных ресурсов.</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-shield-alt"></i>
+                            <span><strong>Повысить безопасность</strong> благодаря контролю за устаревшим оборудованием
+                                и несанкционированным ПО.</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-file-alt"></i>
+                            <span><strong>Упростить аудит</strong> и подготовку отчётности по ИТ-активам.</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-bolt"></i>
+                            <span><strong>Ускорить реакцию на инциденты</strong> за счёт оперативного мониторинга
+                                состояния устройств.</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-expand"></i>
+                            <span><strong>Масштабировать инфраструктуру</strong> без потери контроля над
+                                активами.</span>
+                        </li>
+                    </ul>
+                    <p>
+                        Система подходит для организаций любого масштаба — от небольших офисов до распределённых
+                        корпоративных сетей.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Как работает приложение -->
+            <section class="section">
+                <div class="section-header">
+                    <h2><i class="fas fa-question-circle"></i> Как работает приложение?</h2>
+                </div>
+                <div class="section-content">
+                    <p>
+                        <strong>Unified Network</strong> предоставляет удобный веб-интерфейс для управления ИТ-активами.
+                        Основные этапы работы:
+                    </p>
+                    <div class="feature-step">
+                        <div class="step-icon">
+                            <i class="fas fa-plus-circle"></i>
+                        </div>
+                        <div class="step-content">
+                            <h3>Добавление устройства</h3>
+                            <p>Заполните форму с основными параметрами (IP-адрес, MAC-адрес, тип устройства). Система
+                                автоматически соберёт дополнительные данные (процессор, память, ОС).</p>
+                        </div>
+                    </div>
+                    <div class="feature-step">
+                        <div class="step-icon">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                        <div class="step-content">
+                            <h3>Просмотр информации</h3>
+                            <p>Перейдите на страницу "Информация об устройствах", чтобы увидеть детали по каждому
+                                активу, включая статус, технические характеристики и историю изменений.</p>
+                        </div>
+                    </div>
+                    <div class="feature-step">
+                        <div class="step-icon">
+                            <i class="fas fa-list-alt"></i>
+                        </div>
+                        <div class="step-content">
+                            <h3>Учёт ПО</h3>
+                            <p>На странице "Учёт ПО" выберите устройство (сервер или рабочую станцию), чтобы просмотреть
+                                список установленного программного обеспечения.</p>
+                        </div>
+                    </div>
+                    <div class="feature-step">
+                        <div class="step-icon">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <div class="step-content">
+                            <h3>Визуализация сети</h3>
+                            <p>Раздел "Сетевая карта" отображает топологию сети и связи между устройствами.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Инструкция по добавлению устройства -->
+            <section class="section">
+                <div class="section-header">
+                    <h2><i class="fas fa-book"></i> Инструкция по добавлению устройства</h2>
+                </div>
+                <div class="section-content">
+                    <p>
+                        Чтобы зарегистрировать устройство в системе, выполните следующие шаги:
+                    </p>
+                    <div class="feature-step">
+                        <div class="step-icon">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                        <div class="step-content">
+                            <h3>Шаг 1</h3>
+                            <p>Перейдите на страницу "Добавить устройство" в меню приложения.</p>
+                        </div>
+                    </div>
+                    <div class="feature-step">
+                        <div class="step-icon">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                        <div class="step-content">
+                            <h3>Шаг 2</h3>
+                            <p>Заполните поля формы: имя устройства, IP-адрес, MAC-адрес, тип устройства.</p>
+                        </div>
+                    </div>
+                    <div class="feature-step">
+                        <div class="step-icon">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                        <div class="step-content">
+                            <h3>Шаг 3</h3>
+                            <p>Сохраните устройство кнопкой "Добавить устройство".</p>
+                        </div>
+                    </div>
+                    <div class="important-info">
+                        <div class="info-icon">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                        <div class="info-content">
+                            <h3>Важная информация</h3>
+                            <p>Все добавленные устройства автоматически становятся доступны в следующих разделах:</p>
+                            <ul>
+                                <li><strong>Информация об устройствах:</strong> Детальные данные о каждом активе.</li>
+                                <li><strong>Учёт программного обеспечения:</strong> Управление ПО на серверах и рабочих
+                                    станциях.</li>
+                                <li><strong>Сетевая карта:</strong> Интерактивная визуализация сетевой топологии.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <button id="scrollToTopBtn" aria-label="Наверх">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-wrapper">
+                <div class="footer-row">
+                    <div class="footer-col">
+                        <div class="footer-info">
+                            <div class="footer-info-item">
+                                <span class="main-footer-copyright-item">© 2025 Unified Network</span>
+                            </div>
+                            <div class="footer-info-item">
+                                <a href="#" class="footer-link">Техподдержка: +7 (916) 659 23-32</a>
+                            </div>
+                            <div class="footer-info-item">
+                                <a href="mailto:rkutarayev@mail.ru" class="footer-link">rkutaraev@mail.ru</a>
+                            </div>
+                            <div class="footer-info-item">
+                                <a href="../material additional/privacy_policy_authentication.html"
+                                    class="footer-link">Политика конфиденциальности</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Кнопка "Наверх"
+        const scrollBtn = document.getElementById('scrollToTopBtn');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollBtn.classList.add('show');
+            } else {
+                scrollBtn.classList.remove('show');
+            }
+        });
+
+        scrollBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        // Обработка модальных окон авторизации и регистрации
+        document.addEventListener('DOMContentLoaded', () => {
+            const loginBtn = document.getElementById('btnLogin');
+            const registerBtn = document.getElementById('btnRegister');
+            const loginModal = document.getElementById('loginModal');
+            const registerModal = document.getElementById('registerModal');
+
+            // Открытие модальных окон
+            loginBtn.onclick = () => {
+                loginModal.style.display = 'flex';
+            };
+
+            registerBtn.onclick = () => {
+                registerModal.style.display = 'flex';
+            };
+
+            // Закрытие по клику на крестик
+            document.querySelectorAll('.close').forEach(span => {
+                span.onclick = () => {
+                    const target = span.dataset.close;
+                    if (target === 'login') {
+                        loginModal.style.display = 'none';
+                    } else if (target === 'register') {
+                        registerModal.style.display = 'none';
+                    }
+                };
+            });
+
+            // Закрытие по клику за пределами окна
+            window.onclick = (event) => {
+                if (event.target === loginModal) {
+                    loginModal.style.display = 'none';
+                } else if (event.target === registerModal) {
+                    registerModal.style.display = 'none';
+                }
+            };
+
+            // Обработка формы регистрации
+            document.getElementById('registerForm').addEventListener('submit', async (event) => {
+                event.preventDefault();
+                const username = document.getElementById('registerUsername').value;
+                const email = document.getElementById('registerEmail').value;
+                const password = document.getElementById('registerPassword').value;
+                try {
+                    const response = await fetch('http://localhost:8081/api/auth/register', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ username, email, password }),
+                    });
+                    if (!response.ok) {
+                        const errorData = await response.text();
+                        throw new Error(errorData || 'Ошибка регистрации');
+                    }
+                    alert('Регистрация успешна! Теперь вы можете войти.');
+                    registerModal.style.display = 'none';
+                    document.getElementById('registerForm').reset();
+                } catch (error) {
+                    console.error('Ошибка:', error);
+                    alert('Ошибка при регистрации: ' + error.message);
+                }
+            });
+
+            // Обработка формы авторизации
+            document.getElementById('loginForm').addEventListener('submit', async (event) => {
+                event.preventDefault();
+                const username = document.getElementById('loginUsername').value;
+                const password = document.getElementById('loginPassword').value;
+                try {
+                    const response = await fetch('http://localhost:8081/api/auth/login', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ username, password }),
+                    });
+                    if (!response.ok) {
+                        const errorData = await response.text();
+                        throw new Error(errorData || 'Ошибка авторизации');
+                    }
+                    const data = await response.json();
+                    localStorage.setItem('authToken', data.token);
+                    alert('Авторизация успешна!');
+                    window.location.href = '../main pages/main_window.html';
+                } catch (error) {
+                    console.error('Ошибка:', error);
+                    alert('Ошибка при авторизации: ' + error.message);
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

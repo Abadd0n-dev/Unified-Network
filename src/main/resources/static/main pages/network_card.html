@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/repeat style/header_style.css">
+    <link rel="stylesheet" href="../css/repeat style/footer_style.css">
+    <link rel="stylesheet" href="../css/page style/network_card_style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Unified Network/Сетевая карта</title>
+</head>
+
+<body>
+    <header>
+        <div class="logo-and-name">
+            <img src="../img/logo.svg" alt="logo" class="logo" />
+            <span class="title">Unified Network</span>
+        </div>
+        <nav class="nav-bar">
+            <ul>
+                <li><a class="list-bar" href="add_device.html">Добавить устройство</a></li>
+                <li><a class="list-bar" href="main_window.html">Информация об устройствах</a></li>
+                <li><a class="list-bar" href="accounting_by.html">Учёт ПО</a></li>
+                <li><a class="list-bar active" href="network_card.html">Сетевая карта</a></li>
+            </ul>
+        </nav>
+        <div class="language-and-exit">
+            <button class="btn-exit-acc" id="logoutButton">Выйти из аккаунта</button>
+        </div>
+    </header>
+    <main>
+        <div class="page-title">
+            <h1><i class="fas fa-network-wired"></i> Сетевая карта</h1>
+        </div>
+        <!-- Редактор сетевой карты -->
+        <section class="network-editor-container">
+            <div class="network-canvas-container">
+                <div class="network-controls">
+                    <button id="addEdgeBtn" class="btn-control">
+                        <i class="fas fa-link"></i> Добавить связь
+                    </button>
+                    <button id="clearBtn" class="btn-control">
+                        <i class="fas fa-trash"></i> Очистить карту
+                    </button>
+                    <button id="saveBtn" class="btn-save">
+                        <i class="fas fa-save"></i> Сохранить карту
+                    </button>
+                </div>
+                <div class="network-canvas">
+                    <div id="network"></div>
+                </div>
+                <!-- Список устройств -->
+                <div class="device-list-section">
+                    <div class="section-header">
+                        <h2><i class="fas fa-list"></i> Список устройств</h2>
+                    </div>
+                    <div class="search-filter">
+                        <input type="text" id="searchDevice" placeholder="Поиск по имени или IP...">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="device-list-container">
+                        <ul id="deviceList" class="device-list">
+                            <!-- Устройства будут добавлены динамически -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <button id="scrollToTopBtn" aria-label="Наверх">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    <footer class="main-footer">
+        <div class="container">
+            <div class="main-footer-top">
+                <div class="main-footer-row">
+                    <div class="main-footer-col">
+                        <div class="main-footer-logo-is-desktop">
+                            <span class="main-footer-logo-is-desktop1">Unified Network</span>
+                        </div>
+                        <div class="main-footer-info">
+                            <div class="main-footer-info-item">
+                                <a href="#">Техподдержка: +7 (916) 659 23-32</a>
+                            </div>
+                            <div class="main-footer-info-item">
+                                <a href="mailto:rkutarayev@mail.ru" class="main-footer-info-link">rkutarayev@mail.ru</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main-footer-nav-col">
+                        <div class="main-footer-nav-head">
+                            <div class="main-footer-nav-title">Ресурсы</div>
+                        </div>
+                        <div class="main-footer-nav-body">
+                            <ul class="main-footer-nav-list">
+                                <li class="main-footer-nav-item"><a
+                                        href="../material additional/about_development_main.html"
+                                        class="main-footer-nav-link">О
+                                        разработке</a></li>
+                                <li class="main-footer-nav-item"><a href="../material additional/features_main.html"
+                                        class="main-footer-nav-link">Возможности</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="main-footer-nav-col">
+                        <div class="main-footer-nav-head">
+                            <div class="main-footer-nav-title">Поддержка</div>
+                        </div>
+                        <div class="main-footer-nav-body">
+                            <ul class="main-footer-nav-list">
+                                <li class="main-footer-nav-item"><a
+                                        href="../material additional/documentation_main.html"
+                                        class="main-footer-nav-link">Документация</a></li>
+                                <li class="main-footer-nav-item"><a href="#" id="copyContactsLink"
+                                        class="main-footer-nav-link">Контакты</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main-footer-bot">
+                <div class="main-footer-copyright">
+                    <div class="main-footer-copyright-item">© 2025 Unified Network</div>
+                </div>
+                <nav class="main-footer-bot-nav">
+                    <div class="main-footer-bot-nav-item">
+                        <a href="../material additional/privacy_policy_main.html"
+                            class="main-footer-bot-nav-link">Политика конфиденциальности</a>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </footer>
+    <!-- Подключение Vis.js -->
+    <script src="https://cdn.jsdelivr.net/npm/vis-network@9.1.6/dist/vis-network.min.js"></script>
+    <!-- Логика работы -->
+    <script>
+        // Выход из аккаунта
+        document.getElementById('logoutButton').addEventListener('click', (event) => {
+            event.preventDefault();
+            localStorage.removeItem('authToken');
+            window.location.href = '../authentication/authentication_main.html';
+        });
+
+        // Проверка токена при загрузке страницы
+        document.addEventListener('DOMContentLoaded', () => {
+            const token = localStorage.getItem('authToken');
+            if (!token) {
+                alert('Вы не авторизованы! Перенаправляем на страницу авторизации.');
+                window.location.href = '../authentication/authentication_main.html';
+            }
+        });
+
+        // Глобальные переменные
+        let network = null;
+        let nodes = new vis.DataSet([]);
+        let edges = new vis.DataSet([]);
+        let selectedNodeId = null;
+
+        // Инициализация редактора
+        function initNetwork() {
+            const container = document.getElementById('network');
+            const data = { nodes: nodes, edges: edges };
+            const options = {
+                nodes: {
+                    shape: 'box',
+                    color: {
+                        background: '#fff',
+                        border: '#7B1FA2',
+                        highlight: {
+                            border: '#AA47BC',
+                            background: '#fff'
+                        }
+                    },
+                    font: { color: '#333', size: 12 },
+                    margin: 10,
+                    widthConstraint: { minimum: 120 }
+                },
+                edges: {
+                    color: { color: '#7B1FA2', highlight: '#AA47BC' },
+                    arrows: { to: { enabled: true, scaleFactor: 0.5 } },
+                    width: 1.5
+                },
+                physics: {
+                    enabled: true,
+                    barnesHut: { gravitationalConstant: -10000, centralGravity: 0.3, springLength: 150 }
+                },
+                interaction: {
+                    dragNodes: true,
+                    dragView: true,
+                    zoomView: true,
+                    hover: true
+                }
+            };
+            network = new vis.Network(container, data, options);
+
+            // Обработчик клика по узлу
+            network.on('click', (params) => {
+                if (params.nodes.length > 0) {
+                    selectedNodeId = params.nodes[0];
+                }
+            });
+
+            // Обработчик двойного клика для удаления узла
+            network.on('doubleClick', (params) => {
+                if (params.nodes.length > 0) {
+                    const nodeId = params.nodes[0];
+                    if (confirm(`Вы уверены, что хотите удалить устройство с карты?`)) {
+                        removeNodeAndEdges(nodeId);
+                    }
+                }
+            });
+        }
+
+        // Загрузка списка устройств
+        async function loadDeviceList() {
+            try {
+                const response = await fetch('http://localhost:8081/api/devices', {
+                    headers: { 'Authorization': `Bearer ${localStorage.getItem('authToken')}` }
+                });
+                if (!response.ok) throw new Error('Ошибка загрузки списка устройств');
+                const devices = await response.json();
+                const deviceListElement = document.getElementById('deviceList');
+                deviceListElement.innerHTML = '';
+                devices.forEach(device => {
+                    const deviceItem = document.createElement('li');
+                    deviceItem.innerHTML = `
+                        <span class="device-info">
+                            <i class="fas ${getDeviceIcon(device.type)}"></i>
+                            <span class="device-name">${device.name}</span>
+                            <span class="device-ip">${device.ip}</span>
+                        </span>
+                        <span class="device-status ${device.status === 'Активно' ? 'active' : 'inactive'}">
+                            <i class="fas fa-circle"></i> ${device.status || 'Неизвестно'}
+                        </span>
+                    `;
+                    deviceItem.addEventListener('click', () => addNodeToNetwork(device));
+                    deviceListElement.appendChild(deviceItem);
+                });
+            } catch (error) {
+                console.error('Ошибка:', error);
+                alert('Ошибка при загрузке списка устройств: ' + error.message);
+            }
+        }
+
+        // Добавление устройства на карту
+        function addNodeToNetwork(device) {
+            if (!nodes.get().some(node => node.id === device.ip)) {
+                nodes.add({
+                    id: device.ip,
+                    label: `${device.name}\n${device.ip}`,
+                    title: `Тип: ${device.type}\nСтатус: ${device.status}`,
+                    shape: 'box',
+                    color: {
+                        background: '#fff',
+                        border: '#7B1FA2',
+                        highlight: {
+                            border: '#AA47BC',
+                            background: '#fff'
+                        }
+                    },
+                    font: {
+                        color: '#333',
+                        size: 12,
+                        multi: true,
+                        align: 'center'
+                    },
+                    margin: 10,
+                    widthConstraint: {
+                        minimum: 120
+                    }
+                });
+            }
+        }
+
+        // Получение иконки для типа устройства
+        function getDeviceIcon(type) {
+            switch (type) {
+                case 'server': return 'fa-server';
+                case 'printer': return 'fa-print';
+                case 'router': return 'fa-router';
+                case 'switch': return 'fa-exchange-alt';
+                case 'workstation': return 'fa-desktop';
+                default: return 'fa-question-circle';
+            }
+        }
+
+        // Добавление связи между устройствами
+        function addEdge() {
+            if (!selectedNodeId) {
+                alert('Выберите устройство, от которого хотите создать связь!');
+                return;
+            }
+            const targetNodeId = prompt('Введите IP устройства, с которым хотите создать связь:');
+            if (!targetNodeId) return;
+            if (nodes.get().some(node => node.id === targetNodeId)) {
+                if (edges.get().some(edge => (edge.from === selectedNodeId && edge.to === targetNodeId) || (edge.from === targetNodeId && edge.to === selectedNodeId))) {
+                    alert('Связь между этими устройствами уже существует!');
+                    return;
+                }
+                edges.add({ from: selectedNodeId, to: targetNodeId, arrows: 'to' });
+            } else {
+                alert('Устройство с таким IP не найдено!');
+            }
+        }
+
+        // Загрузка состояния карты
+        function saveNetwork() {
+            const nodesData = nodes.get().map(node => ({
+                id: node.id,
+                label: node.label
+            }));
+
+            const edgesData = edges.get().map(edge => ({
+                from: edge.from,
+                to: edge.to
+            }));
+
+            const requestData = {
+                nodes: nodesData,
+                edges: edgesData
+            };
+
+            fetch(`http://localhost:8081/api/network-maps/1/save-state`, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
+                    'Content-Type': 'application/json;charset=UTF-8'
+                },
+                body: JSON.stringify(requestData)
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        return response.json().then(err => {
+                            throw new Error(err.message || "Ошибка сохранения сетевой карты");
+                        });
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    alert(data.message || "Сетевая карта успешно сохранена!");
+                })
+                .catch(error => {
+                    console.error('Ошибка:', error);
+                    alert('Ошибка при сохранении сетевой карты: ' + error.message);
+                });
+        }
+
+        async function loadNetwork() {
+            try {
+                const response = await fetch(`http://localhost:8081/api/network-maps/1/load-state`, {
+                    headers: {
+                        'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error('Ошибка загрузки состояния сетевой карты');
+                }
+
+                const state = await response.json();
+
+                // Очищаем текущие узлы и связи
+                nodes.clear();
+                edges.clear();
+
+                // Загружаем узлы
+                state.nodes.forEach(node => {
+                    nodes.add({
+                        id: node.id,
+                        label: node.label
+                    });
+                });
+
+                // Загружаем связи
+                state.edges.forEach(edge => {
+                    edges.add({
+                        from: edge.from,
+                        to: edge.to
+                    });
+                });
+
+                console.log("Сетевая карта успешно загружена!");
+            } catch (error) {
+                console.error('Ошибка:', error);
+            }
+        }
+
+        // Удаление устройства с карты
+        function removeNodeAndEdges(nodeId) {
+            if (confirm(`Вы уверены, что хотите удалить устройство с карты?`)) {
+                fetch(`http://localhost:8081/api/network-maps/1/nodes/${encodeURIComponent(nodeId)}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+                    }
+                })
+                    .then(() => {
+                        // Удаляем узел и связанные связи на клиентской стороне
+                        nodes.remove({ id: nodeId });
+                        const connectedEdges = edges.get({
+                            filter: (edge) => edge.from === nodeId || edge.to === nodeId
+                        });
+                        connectedEdges.forEach(edge => {
+                            edges.remove(edge.id);
+                        });
+                    })
+                    .catch(error => {
+                        console.error('Ошибка:', error);
+                        alert('Ошибка при удалении устройства: ' + error.message);
+                    });
+            }
+        }
+
+        // Очистка карты
+        function clearNetwork() {
+            if (confirm('Вы уверены, что хотите очистить карту?')) {
+                fetch(`http://localhost:8081/api/network-maps/1/clear`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+                    }
+                })
+                    .then(() => {
+                        nodes.clear();
+                        edges.clear();
+                    })
+                    .catch(error => {
+                        console.error('Ошибка:', error);
+                        alert('Ошибка при очистке карты: ' + error.message);
+                    });
+            }
+        }
+
+        // Функция для создания сетевой карты для пользователя
+        async function createNetworkMapForUser() {
+            try {
+                const response = await fetch(`http://localhost:8081/api/network-maps?name=DefaultMap`, {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error('Ошибка создания сетевой карты');
+                }
+
+                const networkMap = await response.json();
+                localStorage.setItem('networkMapId', networkMap.id);
+                return networkMap.id;
+            } catch (error) {
+                console.error('Ошибка:', error);
+                throw error;
+            }
+        }
+
+        // Функция для загрузки сетевой карты
+        async function loadNetwork() {
+            let networkMapId = localStorage.getItem('networkMapId');
+
+            if (!networkMapId) {
+                networkMapId = await createNetworkMapForUser();
+            }
+
+            try {
+                const response = await fetch(`http://localhost:8081/api/network-maps/${networkMapId}/load-state`, {
+                    headers: {
+                        'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error('Ошибка загрузки состояния сетевой карты');
+                }
+
+                const state = await response.json();
+
+                // Очищаем текущие узлы и связи
+                nodes.clear();
+                edges.clear();
+
+                // Загружаем узлы
+                state.nodes.forEach(node => {
+                    nodes.add({
+                        id: node.id,
+                        label: node.label
+                    });
+                });
+
+                // Загружаем связи
+                state.edges.forEach(edge => {
+                    edges.add({
+                        from: edge.from,
+                        to: edge.to
+                    });
+                });
+
+                console.log("Сетевая карта успешно загружена!");
+            } catch (error) {
+                console.error('Ошибка:', error);
+            }
+        }
+
+        // Функция для сохранения сетевой карты
+        function saveNetwork() {
+            const networkMapId = localStorage.getItem('networkMapId');
+
+            if (!networkMapId) {
+                alert('Ошибка: Сетевая карта не найдена!');
+                return;
+            }
+
+            const nodesData = nodes.get().map(node => ({
+                id: node.id,
+                label: node.label
+            }));
+
+            const edgesData = edges.get().map(edge => ({
+                from: edge.from,
+                to: edge.to
+            }));
+
+            const requestData = {
+                nodes: nodesData,
+                edges: edgesData
+            };
+
+            fetch(`http://localhost:8081/api/network-maps/${networkMapId}/save-state`, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
+                    'Content-Type': 'application/json;charset=UTF-8'
+                },
+                body: JSON.stringify(requestData)
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        return response.json().then(err => {
+                            throw new Error(err.message || "Ошибка сохранения сетевой карты");
+                        });
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    alert(data.message || "Сетевая карта успешно сохранена!");
+                })
+                .catch(error => {
+                    console.error('Ошибка:', error);
+                    alert('Ошибка при сохранении сетевой карты: ' + error.message);
+                });
+        }
+
+        // Поиск устройств
+        document.getElementById('searchDevice').addEventListener('input', (event) => {
+            const searchTerm = event.target.value.toLowerCase();
+            const devices = document.querySelectorAll('#deviceList li');
+            devices.forEach(device => {
+                const deviceText = device.querySelector('.device-info').textContent.toLowerCase();
+                device.style.display = deviceText.includes(searchTerm) ? 'flex' : 'none';
+            });
+        });
+
+        // Кнопка "Наверх"
+        const scrollBtn = document.getElementById('scrollToTopBtn');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollBtn.classList.add('show');
+            } else {
+                scrollBtn.classList.remove('show');
+            }
+        });
+        scrollBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Инициализация при загрузке страницы
+        document.addEventListener('DOMContentLoaded', () => {
+            initNetwork();
+            loadDeviceList();
+            loadNetwork(); // Загружаем состояние карты при инициализации страницы
+
+            document.getElementById('addEdgeBtn').addEventListener('click', addEdge);
+            document.getElementById('clearBtn').addEventListener('click', clearNetwork);
+            document.getElementById('saveBtn').addEventListener('click', saveNetwork);
+        });
+
+        document.getElementById('copyContactsLink').addEventListener('click', (event) => {
+            event.preventDefault(); // Отменяем стандартное поведение ссылки
+
+            // Контакты для копирования
+            const contacts = "Техподдержка: +7 (916) 659 23-32\nEmail: rkutaraev@mail.ru";
+
+            // Копируем текст в буфер обмена
+            navigator.clipboard.writeText(contacts)
+                .then(() => {
+                    alert('Контакты скопированы в буфер обмена!');
+                })
+                .catch((error) => {
+                    console.error('Ошибка при копировании: ', error);
+                    alert('Не удалось скопировать контакты. Попробуйте ещё раз.');
+                });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/repeat style/header_style.css">
+    <link rel="stylesheet" href="../css/repeat style/footer_style.css">
+    <link rel="stylesheet" href="../css/page style/main_window_style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Unified Network/Информация об устройствах</title>
+</head>
+
+<body>
+    <header>
+        <div class="logo-and-name">
+            <img src="../img/logo.svg" alt="logo" class="logo" />
+            <span class="title">Unified Network</span>
+        </div>
+        <nav class="nav-bar">
+            <ul>
+                <li><a class="list-bar" href="add_device.html">Добавить устройство</a></li>
+                <li><a class="list-bar active" href="main_window.html">Информация об устройствах</a></li>
+                <li><a class="list-bar" href="accounting_by.html">Учёт ПО</a></li>
+                <li><a class="list-bar" href="network_card.html">Сетевая карта</a></li>
+            </ul>
+        </nav>
+        <div class="language-and-exit">
+            <button class="btn-exit-acc" id="logoutButton">Выйти из аккаунта</button>
+        </div>
+    </header>
+    <main>
+        <div class="page-title">
+            <h1><i class="fas fa-info-circle"></i> Информация об устройствах</h1>
+        </div>
+        <div class="device-container">
+            <!-- Список устройств -->
+            <section class="device-list-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-list"></i> Список устройств</h2>
+                </div>
+                <div class="search-filter">
+                    <input type="text" id="searchDevice" placeholder="Поиск по имени или IP...">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="device-list-container">
+                    <ul id="deviceList" class="device-list">
+                        <!-- Устройства добавляются динамически -->
+                    </ul>
+                </div>
+            </section>
+            <!-- Подробная информация об устройстве -->
+            <section class="device-details-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-server"></i> Информация об устройстве</h2>
+                </div>
+                <div class="device-tabs">
+                    <button class="tab-button active" data-tab="overview">Обзор</button>
+                    <button class="tab-button" data-tab="performance">Производительность</button>
+                    <button class="tab-button" data-tab="network">Сеть</button>
+                    <button class="tab-button" data-tab="system">Система</button>
+                </div>
+                <div class="tab-content active" data-tab="overview">
+                    <div class="device-overview">
+                        <div class="overview-row">
+                            <div class="overview-item">
+                                <div class="overview-item-header">
+                                    <i class="fas fa-circle" id="deviceStatusIcon"></i>
+                                    <h4>Статус</h4>
+                                </div>
+                                <p id="deviceStatus">Неизвестно</p>
+                            </div>
+                            <div class="overview-item">
+                                <div class="overview-item-header">
+                                    <i class="fas fa-tags"></i>
+                                    <h4>Тип устройства</h4>
+                                </div>
+                                <p id="deviceType">Неизвестно</p>
+                            </div>
+                            <div class="overview-item">
+                                <div class="overview-item-header">
+                                    <i class="fas fa-fingerprint"></i>
+                                    <h4>MAC-адрес</h4>
+                                </div>
+                                <p id="deviceMac">Неизвестно</p>
+                            </div>
+                        </div>
+                        <div class="overview-row">
+                            <div class="overview-item">
+                                <div class="overview-item-header">
+                                    <i class="fas fa-mobile-alt"></i>
+                                    <h4>Модель</h4>
+                                </div>
+                                <p id="deviceModel">Неизвестно</p>
+                            </div>
+                            <div class="overview-item">
+                                <div class="overview-item-header">
+                                    <i class="fas fa-clock"></i>
+                                    <h4>Последняя активность</h4>
+                                </div>
+                                <p id="deviceLastActivity">Неизвестно</p>
+                            </div>
+                            <div class="overview-item">
+                                <div class="overview-item-header">
+                                    <i class="fas fa-clock"></i>
+                                    <h4>Время безотказной работы</h4>
+                                </div>
+                                <p id="deviceUptime">Неизвестно</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-content" data-tab="performance">
+                    <div class="performance-metrics">
+                        <div class="metric-container">
+                            <div class="metric-header">
+                                <h4><i class="fas fa-microchip"></i> Загрузка процессора</h4>
+                            </div>
+                            <div class="metric-value">
+                                <div class="progress-bar-container">
+                                    <div id="cpuUsageProgress" class="progress-bar" style="width: 0%;"></div>
+                                </div>
+                                <p id="cpuUsageValue">0%</p>
+                            </div>
+                        </div>
+                        <div class="metric-container">
+                            <div class="metric-header">
+                                <h4><i class="fas fa-memory"></i> Использование памяти</h4>
+                            </div>
+                            <div class="metric-value">
+                                <div class="doughnut-chart-container">
+                                    <canvas id="memoryUsageChart"></canvas>
+                                </div>
+                                <p id="memoryUsageValue">0%</p>
+                            </div>
+                        </div>
+                        <div class="metric-container">
+                            <div class="metric-header">
+                                <h4><i class="fas fa-thermometer-half"></i> Температура</h4>
+                            </div>
+                            <div class="metric-value">
+                                <div class="progress-bar-container">
+                                    <div id="temperatureProgress" class="progress-bar" style="width: 0%;"></div>
+                                </div>
+                                <p id="temperatureValue">0°C</p>
+                            </div>
+                        </div>
+                        <div class="metric-container">
+                            <div class="metric-header">
+                                <h4><i class="fas fa-hdd"></i> Дисковое пространство</h4>
+                            </div>
+                            <div class="metric-value">
+                                <div class="doughnut-chart-container">
+                                    <canvas id="diskUsageChart"></canvas>
+                                </div>
+                                <p id="diskUsageValue">0%</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-content" data-tab="network">
+                    <div class="network-metrics">
+                        <div class="metric-container">
+                            <div class="metric-header">
+                                <h4><i class="fas fa-network-wired"></i> IP-адрес</h4>
+                            </div>
+                            <div class="metric-value">
+                                <p id="deviceIpValue">Неизвестно</p>
+                            </div>
+                        </div>
+                        <div class="metric-container">
+                            <div class="metric-header">
+                                <h4><i class="fas fa-network-wired"></i> Сетевая активность</h4>
+                            </div>
+                            <div class="metric-value">
+                                <p id="networkActivityValue">Неизвестно</p>
+                            </div>
+                        </div>
+                        <div class="metric-container">
+                            <div class="metric-header">
+                                <h4><i class="fas fa-download"></i> Входящий трафик</h4>
+                            </div>
+                            <div class="metric-value">
+                                <p id="deviceIncomingTraffic">Неизвестно</p>
+                            </div>
+                        </div>
+                        <div class="metric-container">
+                            <div class="metric-header">
+                                <h4><i class="fas fa-upload"></i> Исходящий трафик</h4>
+                            </div>
+                            <div class="metric-value">
+                                <p id="deviceOutgoingTraffic">Неизвестно</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-content" data-tab="system">
+                    <div class="system-info">
+                        <div class="system-row">
+                            <div class="system-item">
+                                <div class="system-item-header">
+                                    <i class="fas fa-microchip"></i>
+                                    <h4>Процессор</h4>
+                                </div>
+                                <p id="deviceProcessor">Неизвестно</p>
+                            </div>
+                            <div class="system-item">
+                                <div class="system-item-header">
+                                    <i class="fas fa-memory"></i>
+                                    <h4>Оперативная память</h4>
+                                </div>
+                                <p id="deviceRam">Неизвестно</p>
+                            </div>
+                        </div>
+                        <div class="system-row">
+                            <div class="system-item">
+                                <div class="system-item-header">
+                                    <i class="fas fa-hdd"></i>
+                                    <h4>Жесткий диск</h4>
+                                </div>
+                                <p id="deviceStorage">Неизвестно</p>
+                            </div>
+                            <div class="system-item">
+                                <div class="system-item-header">
+                                    <i class="fas fa-battery-full"></i>
+                                    <h4>Источник питания</h4>
+                                </div>
+                                <p id="devicePower">Неизвестно</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    <button id="scrollToTopBtn" aria-label="Наверх">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    <footer class="main-footer">
+        <div class="container">
+            <div class="main-footer-top">
+                <div class="main-footer-row">
+                    <div class="main-footer-col">
+                        <div class="main-footer-logo-is-desktop">
+                            <span class="main-footer-logo-is-desktop1">Unified Network</span>
+                        </div>
+                        <div class="main-footer-info">
+                            <div class="main-footer-info-item">
+                                <a href="#">Техподдержка: +7 (916) 659 23-32</a>
+                            </div>
+                            <div class="main-footer-info-item">
+                                <a href="mailto:rkutarayev@mail.ru" class="main-footer-info-link">rkutaraev@mail.ru</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main-footer-nav-col">
+                        <div class="main-footer-nav-head">
+                            <div class="main-footer-nav-title">Ресурсы</div>
+                        </div>
+                        <div class="main-footer-nav-body">
+                            <ul class="main-footer-nav-list">
+                                <li class="main-footer-nav-item"><a
+                                        href="../material additional/about_development_main.html"
+                                        class="main-footer-nav-link">О
+                                        разработке</a></li>
+                                <li class="main-footer-nav-item"><a href="../material additional/features_main.html"
+                                        class="main-footer-nav-link">Возможности</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="main-footer-nav-col">
+                        <div class="main-footer-nav-head">
+                            <div class="main-footer-nav-title">Поддержка</div>
+                        </div>
+                        <div class="main-footer-nav-body">
+                            <ul class="main-footer-nav-list">
+                                <li class="main-footer-nav-item"><a
+                                        href="../material additional/documentation_main.html"
+                                        class="main-footer-nav-link">Документация</a></li>
+                                <li class="main-footer-nav-item"><a href="#" id="copyContactsLink"
+                                        class="main-footer-nav-link">Контакты</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main-footer-bot">
+                <div class="main-footer-copyright">
+                    <div class="main-footer-copyright-item">© 2025 Unified Network</div>
+                </div>
+                <nav class="main-footer-bot-nav">
+                    <div class="main-footer-bot-nav-item">
+                        <a href="../material additional/privacy_policy_main.html"
+                            class="main-footer-bot-nav-link">Политика конфиденциальности</a>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </footer>
+    <script>
+        // Глобальный объект для отслеживания уведомлений о недоступности устройств
+        const deviceUnavailableNotifications = {};
+
+        // Выход из аккаунта
+        document.getElementById('logoutButton').addEventListener('click', (event) => {
+            event.preventDefault();
+            localStorage.removeItem('authToken');
+            window.location.href = '../authentication/authentication_main.html';
+        });
+
+        document.querySelectorAll('.tab-button').forEach(button => {
+            button.addEventListener('click', () => {
+                document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+                button.classList.add('active');
+                const tabId = button.getAttribute('data-tab');
+                document.querySelector(`.tab-content[data-tab="${tabId}"]`).classList.add('active');
+            });
+        });
+
+        // Загрузка списка устройств
+        async function loadDeviceList() {
+            try {
+                const response = await fetch('http://localhost:8081/api/devices', {
+                    headers: {
+                        'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+                    }
+                });
+                if (!response.ok) {
+                    throw new Error('Ошибка загрузки списка устройств');
+                }
+                const devices = await response.json();
+                const deviceListElement = document.getElementById('deviceList');
+                deviceListElement.innerHTML = '';
+                devices.forEach(device => {
+                    const deviceItem = document.createElement('li');
+                    deviceItem.innerHTML = `
+                        <span class="device-info">
+                            <i class="fas ${getDeviceIcon(device.type)}"></i>
+                            <span class="device-name">${device.name}</span>
+                            <span class="device-ip">${device.ip}</span>
+                        </span>
+                        <span class="device-status ${device.status === 'Активно' ? 'active' : 'inactive'}">
+                            <i class="fas fa-circle"></i> ${device.status || 'Неизвестно'}
+                        </span>
+                    `;
+                    // Добавляем обработчик клика на элемент списка
+                    deviceItem.addEventListener('click', () => {
+                        showDeviceDetails(device);
+                    });
+                    deviceListElement.appendChild(deviceItem);
+                });
+            } catch (error) {
+                console.error('Ошибка:', error);
+                alert('Ошибка при загрузке списка устройств: ' + error.message);
+            }
+        }
+
+        // Проверка токена при загрузке страницы
+        document.addEventListener('DOMContentLoaded', () => {
+            const token = localStorage.getItem('authToken');
+            if (!token) {
+                alert('Вы не авторизованы! Перенаправляем на страницу авторизации.');
+                window.location.href = '../authentication/authentication_main.html';
+            }
+        });
+
+        // Получение иконки для типа устройства
+        function getDeviceIcon(type) {
+            switch (type) {
+                case 'server': return 'fa-server';
+                case 'printer': return 'fa-print';
+                case 'router': return 'fa-router';
+                case 'switch': return 'fa-exchange-alt';
+                case 'workstation': return 'fa-desktop';
+                default: return 'fa-question-circle';
+            }
+        }
+
+        // Загрузка текущих метрик устройства
+        async function loadDeviceMetrics(ip, isUserInitiated = false) {
+            try {
+                const response = await fetch(`http://localhost:8081/api/devices/${ip}/metrics`, {
+                    headers: {
+                        'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+                    }
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    if (isUserInitiated) {
+                        alert(`Устройство с IP ${ip} недоступно.`);
+                    }
+                    throw new Error(errorData.error || 'Ошибка загрузки метрик устройства');
+                }
+
+                const metrics = await response.json();
+                updateMetrics(metrics);
+            } catch (error) {
+                console.error('Ошибка:', error);
+            }
+        }
+
+        // Вызов функции обновления при выборе устройства
+        async function showDeviceDetails(device) {
+            // Сброс всех значений на "Неизвестно"
+            const deviceStatus = document.getElementById('deviceStatus');
+            const deviceType = document.getElementById('deviceType');
+            const deviceMac = document.getElementById('deviceMac');
+            const deviceModel = document.getElementById('deviceModel');
+            const deviceLastActivity = document.getElementById('deviceLastActivity');
+            const deviceIpValue = document.getElementById('deviceIpValue');
+            const deviceUptime = document.getElementById('deviceUptime');
+            const cpuUsageProgress = document.getElementById('cpuUsageProgress');
+            const cpuUsageValue = document.getElementById('cpuUsageValue');
+            const memoryUsageValue = document.getElementById('memoryUsageValue');
+            const temperatureProgress = document.getElementById('temperatureProgress');
+            const temperatureValue = document.getElementById('temperatureValue');
+            const diskUsageValue = document.getElementById('diskUsageValue');
+            const networkActivityValue = document.getElementById('networkActivityValue');
+            const deviceIncomingTraffic = document.getElementById('deviceIncomingTraffic');
+            const deviceOutgoingTraffic = document.getElementById('deviceOutgoingTraffic');
+            const deviceProcessor = document.getElementById('deviceProcessor');
+            const deviceRam = document.getElementById('deviceRam');
+            const deviceStorage = document.getElementById('deviceStorage');
+            const devicePower = document.getElementById('devicePower');
+
+            if (deviceStatus) deviceStatus.textContent = 'Неизвестно';
+            if (deviceType) deviceType.textContent = 'Неизвестно';
+            if (deviceMac) deviceMac.textContent = 'Неизвестно';
+            if (deviceModel) deviceModel.textContent = 'Неизвестно';
+            if (deviceLastActivity) deviceLastActivity.textContent = 'Неизвестно';
+            if (deviceIpValue) deviceIpValue.textContent = 'Неизвестно';
+            if (deviceUptime) deviceUptime.textContent = 'Неизвестно';
+            if (cpuUsageValue) cpuUsageValue.textContent = '0%';
+            if (cpuUsageProgress) cpuUsageProgress.style.width = '0%';
+            if (memoryUsageValue) memoryUsageValue.textContent = '0%';
+            if (temperatureValue) temperatureValue.textContent = '0°C';
+            if (temperatureProgress) temperatureProgress.style.width = '0%';
+            if (diskUsageValue) diskUsageValue.textContent = '0%';
+            if (networkActivityValue) networkActivityValue.textContent = 'Неизвестно';
+            if (deviceIncomingTraffic) deviceIncomingTraffic.textContent = 'Неизвестно';
+            if (deviceOutgoingTraffic) deviceOutgoingTraffic.textContent = 'Неизвестно';
+            if (deviceProcessor) deviceProcessor.textContent = 'Неизвестно';
+            if (deviceRam) deviceRam.textContent = 'Неизвестно';
+            if (deviceStorage) deviceStorage.textContent = 'Неизвестно';
+            if (devicePower) devicePower.textContent = 'Неизвестно';
+
+            // Обновление информации на вкладке "Обзор" текущим устройством
+            if (deviceStatus) deviceStatus.textContent = device.status || 'Неизвестно';
+            if (deviceType) deviceType.textContent = device.type || 'Неизвестно';
+            if (deviceMac) deviceMac.textContent = device.macAddress || 'Неизвестно';
+            if (deviceModel) deviceModel.textContent = device.model || 'Неизвестно';
+            if (deviceLastActivity) deviceLastActivity.textContent = device.lastActivity || 'Неизвестно';
+            if (deviceIpValue) deviceIpValue.textContent = device.ip || 'Неизвестно';
+
+            // Запуск периодического обновления метрик
+            if (window.metricsIntervalId) {
+                clearInterval(window.metricsIntervalId);
+            }
+
+            // Загрузка метрик с флагом, что это инициация пользователем
+            await loadDeviceMetrics(device.ip, true);
+            window.metricsIntervalId = startMetricsUpdate(device.ip);
+        }
+
+        // Функция для периодического обновления метрик
+        function startMetricsUpdate(ip, interval = 5000) {
+            const intervalId = setInterval(() => {
+                loadDeviceMetrics(ip, false);
+            }, interval);
+            return intervalId;
+        }
+
+        // Запуск периодического обновления списка устройств
+        setInterval(loadDeviceList, 5000); // Обновление каждые 5 секунд
+
+        let memoryUsageChart = null;
+        let diskUsageChart = null;
+
+        function updateMetrics(metrics) {
+            // Конвертируем uptime из секунд в удобочитаемый формат
+            let uptimeInSeconds = metrics.uptime || 0;
+            let uptimeDays = Math.floor(uptimeInSeconds / 86400);
+            let uptimeHours = Math.floor((uptimeInSeconds % 86400) / 3600);
+            let uptimeMinutes = Math.floor((uptimeInSeconds % 3600) / 60);
+            let uptimeString = uptimeDays > 0 ? `${uptimeDays} день/я, ` : '';
+            uptimeString += uptimeHours > 0 ? `${uptimeHours} час/а, ` : '';
+            uptimeString += `${uptimeMinutes} минут/ы`;
+
+            // Обновление времени безотказной работы
+            const deviceUptime = document.getElementById('deviceUptime');
+            if (deviceUptime) {
+                deviceUptime.textContent = uptimeString || 'Неизвестно';
+            }
+
+            // Обновление загрузки процессора
+            const cpuUsage = parseFloat(metrics.cpuUsage) || 0;
+            const cpuUsageProgress = document.getElementById('cpuUsageProgress');
+            const cpuUsageValue = document.getElementById('cpuUsageValue');
+            if (cpuUsageProgress && cpuUsageValue) {
+                cpuUsageProgress.style.width = `${cpuUsage}%`;
+                cpuUsageValue.textContent = `${cpuUsage}%`;
+            }
+
+            // Обновление использования памяти
+            const memoryUsage = parseFloat(metrics.memoryUsage) || 0;
+            const memoryUsageCtx = document.getElementById('memoryUsageChart');
+            const memoryUsageValue = document.getElementById('memoryUsageValue');
+            if (memoryUsageCtx && memoryUsageValue) {
+                if (memoryUsageChart) {
+                    memoryUsageChart.destroy();
+                }
+                memoryUsageChart = new Chart(memoryUsageCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Использовано', 'Свободно'],
+                        datasets: [{
+                            data: [memoryUsage, 100 - memoryUsage],
+                            backgroundColor: [
+                                'rgba(126, 75, 160, 0.7)',
+                                'rgba(200, 200, 200, 0.7)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'right',
+                                labels: {
+                                    boxWidth: 10,
+                                    padding: 10,
+                                    font: {
+                                        size: 12
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+                memoryUsageValue.textContent = `${memoryUsage}%`;
+            }
+
+            // Обновление температуры
+            let temperature = parseFloat(metrics.temperature) || 0;
+            if (temperature > 100) {
+                temperature = temperature / 10;
+            }
+            const temperatureProgress = document.getElementById('temperatureProgress');
+            const temperatureValue = document.getElementById('temperatureValue');
+            if (temperatureProgress && temperatureValue) {
+                temperatureProgress.style.width = `${temperature}%`;
+                temperatureValue.textContent = `${temperature}°C`;
+            }
+
+            // Обновление дискового пространства
+            const diskUsage = parseFloat(metrics.diskUsage) || 0;
+            const diskUsageCtx = document.getElementById('diskUsageChart');
+            const diskUsageValue = document.getElementById('diskUsageValue');
+            if (diskUsageCtx && diskUsageValue) {
+                if (diskUsageChart) {
+                    diskUsageChart.destroy();
+                }
+                diskUsageChart = new Chart(diskUsageCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Использовано', 'Свободно'],
+                        datasets: [{
+                            data: [diskUsage, 100 - diskUsage],
+                            backgroundColor: [
+                                'rgba(75, 192, 192, 0.7)',
+                                'rgba(200, 200, 200, 0.7)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'right',
+                                labels: {
+                                    boxWidth: 10,
+                                    padding: 10,
+                                    font: {
+                                        size: 12
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+                diskUsageValue.textContent = `${diskUsage}%`;
+            }
+
+            const parsedMetrics = {};
+            for (const key in metrics) {
+                if (typeof metrics[key] === 'string' && metrics[key].includes(',')) {
+                    parsedMetrics[key] = metrics[key].replace(',', '.');
+                } else {
+                    parsedMetrics[key] = metrics[key];
+                }
+            }
+
+            // Обновление сетевых метрик
+            const networkActivityValue = document.getElementById('networkActivityValue');
+            const deviceIncomingTraffic = document.getElementById('deviceIncomingTraffic');
+            const deviceOutgoingTraffic = document.getElementById('deviceOutgoingTraffic');
+            if (networkActivityValue) {
+                const networkActivity = parseFloat(parsedMetrics.networkActivity);
+                networkActivityValue.textContent = !isNaN(networkActivity) ? formatNetworkActivity(networkActivity) : 'Неизвестно';
+            }
+            if (deviceIncomingTraffic) {
+                const incomingTraffic = parseFloat(parsedMetrics.incomingTraffic);
+                deviceIncomingTraffic.textContent = !isNaN(incomingTraffic) ? formatTraffic(incomingTraffic) : 'Неизвестно';
+            }
+            if (deviceOutgoingTraffic) {
+                const outgoingTraffic = parseFloat(parsedMetrics.outgoingTraffic);
+                deviceOutgoingTraffic.textContent = !isNaN(outgoingTraffic) ? formatTraffic(outgoingTraffic) : 'Неизвестно';
+            }
+
+            // Обновление данных на вкладке "Система"
+            const deviceProcessor = document.getElementById('deviceProcessor');
+            const deviceRam = document.getElementById('deviceRam');
+            const deviceStorage = document.getElementById('deviceStorage');
+            const devicePower = document.getElementById('devicePower');
+            if (deviceProcessor) {
+                deviceProcessor.textContent = metrics.processor || 'Неизвестно';
+            }
+            if (deviceRam) {
+                deviceRam.textContent = metrics.ram ? `${metrics.ram} GB` : 'Неизвестно';
+            }
+            if (deviceStorage) {
+                deviceStorage.textContent = metrics.storage ? `${metrics.storage} GB` : 'Неизвестно';
+            }
+            if (devicePower) {
+                devicePower.textContent = metrics.power || 'Неизвестно';
+            }
+        }
+
+        function formatTraffic(value) {
+            if (typeof value !== 'number' || isNaN(value)) {
+                return 'Неизвестно';
+            }
+            return value.toFixed(2) + ' MB';
+        }
+
+        function formatNetworkActivity(value) {
+            if (typeof value !== 'number' || isNaN(value)) {
+                return 'Неизвестно';
+            }
+            return value.toFixed(2) + ' MB';
+        }
+
+        // Поиск устройств
+        document.getElementById('searchDevice').addEventListener('input', (event) => {
+            const searchTerm = event.target.value.toLowerCase();
+            const devices = document.querySelectorAll('#deviceList li');
+            devices.forEach(device => {
+                const deviceText = device.querySelector('.device-info').textContent.toLowerCase();
+                if (deviceText.includes(searchTerm)) {
+                    device.style.display = 'flex';
+                } else {
+                    device.style.display = 'none';
+                }
+            });
+        });
+
+        // Загружаем список устройств при загрузке страницы
+        document.addEventListener('DOMContentLoaded', () => {
+            loadDeviceList();
+        });
+
+        // Кнопка "Наверх"
+        const scrollBtn = document.getElementById('scrollToTopBtn');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollBtn.classList.add('show');
+            } else {
+                scrollBtn.classList.remove('show');
+            }
+        });
+
+        scrollBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        document.getElementById('copyContactsLink').addEventListener('click', (event) => {
+            event.preventDefault();
+            const contacts = "Техподдержка: +7 (916) 659 23-32\nEmail: rkutaraev@mail.ru";
+            navigator.clipboard.writeText(contacts)
+                .then(() => {
+                    alert('Контакты скопированы в буфер обмена!');
+                })
+                .catch((error) => {
+                    console.error('Ошибка при копировании: ', error);
+                    alert('Не удалось скопировать контакты. Попробуйте ещё раз.');
+                });
+        });
+    </script>
+</body>
+
+</html>

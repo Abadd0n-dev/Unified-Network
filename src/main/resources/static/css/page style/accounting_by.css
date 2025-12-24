@@ -1,0 +1,285 @@
+/* Основные стили */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f7fa;
+    color: #333;
+}
+
+main {
+    max-width: 1400px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+/* Заголовок страницы */
+.page-title {
+    margin-bottom: 30px;
+    padding: 15px 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.page-title h1 {
+    margin: 0;
+    color: #2c3e50;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.page-title h1 i {
+    color: #7e4ba0;
+}
+
+/* Контейнер для списка устройств и информации о ПО */
+.software-container {
+    display: flex;
+    gap: 25px;
+}
+
+/* Список устройств */
+.device-list-section {
+    width: 35%;
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+}
+
+.section-header {
+    margin-bottom: 20px;
+}
+
+.section-header h2 {
+    color: #2c3e50;
+    font-size: 20px;
+    margin: 0 0 10px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Поисковая строка */
+.search-filter {
+    position: relative;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.search-filter input {
+    width: 100%;
+    padding: 10px 10px 10px 35px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.search-filter i {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #aaa;
+}
+
+/* Контейнер списка устройств */
+.device-list-container {
+    flex: 1;
+    max-height: calc(70vh - 100px);
+    overflow-y: auto;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    padding: 10px;
+}
+
+.device-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.device-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    border-radius: 4px;
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    background-color: #f8f9fa;
+}
+
+.device-list li:hover {
+    background-color: #e9ecef;
+}
+
+.device-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+}
+
+.device-name {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.device-ip {
+    color: #666;
+    font-size: 14px;
+}
+
+.device-info i {
+    color: #7e4ba0;
+}
+
+.device-status {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.device-status i {
+    font-size: 8px;
+}
+
+.device-status.active {
+    color: #28a745;
+}
+
+.device-status.inactive {
+    color: #dc3545;
+}
+
+/* Блок информации о ПО */
+.software-info-section {
+    width: 65%;
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Уведомление об отсутствии возможности учета ПО */
+.notification {
+    background: #fff3cd;
+    border: 1px solid #ffeeba;
+    border-radius: 4px;
+    padding: 15px;
+    color: #856404;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.notification i {
+    font-size: 1.2rem;
+}
+
+/* Таблица с ПО */
+.software-table-container {
+    width: 100%;
+    overflow-x: auto;
+    margin-top: 15px;
+}
+
+.software-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.software-table th,
+.software-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.software-table th {
+    background: #f8f9fa;
+    font-weight: 600;
+    color: #333;
+}
+
+.software-table tr:hover {
+    background-color: #f5f5f5;
+}
+
+/* Кнопка "Наверх" */
+#scrollToTopBtn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: #7e4ba0;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: opacity 0.3s;
+    z-index: 1000;
+}
+
+#scrollToTopBtn.show {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Кнопка "Обновить список ПО" */
+.btn-update {
+    background-color: #7e4ba0;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.btn-update:hover {
+    background-color: #6a3d8a;
+    transform: translateY(-1px);
+}
+
+.btn-update:active {
+    transform: translateY(0);
+}
+
+.btn-update i {
+    font-size: 14px;
+}
+
+/* Адаптивность */
+@media (max-width: 1200px) {
+    .software-container {
+        flex-direction: column;
+    }
+
+    .device-list-section,
+    .software-info-section {
+        width: 100%;
+    }
+}

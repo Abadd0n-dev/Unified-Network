@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/repeat style/header_style.css">
+    <link rel="stylesheet" href="../css/repeat style/footer_style.css">
+    <link rel="stylesheet" href="../css/page style/documentation_style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Unified Network / Документация</title>
+</head>
+
+<body>
+    <header>
+        <div class="logo-and-name">
+            <img src="../img/logo.svg" alt="logo" class="logo" />
+            <span class="title">Unified Network</span>
+        </div>
+        <nav class="nav-bar">
+            <ul>
+                <li><a class="list-bar" href="features_authentication.html">Возможности</a></li>
+                <li><a class="list-bar" href="about_development.html">О разработке</a></li>
+                <li><a class="list-bar active" href="documentation_authentication.html">Документация</a></li>
+            </ul>
+        </nav>
+        <div class="language-and-exit">
+            <div class="auth-buttons-wrapper">
+                <button class="auth-button" id="btnLogin">Авторизация</button>
+                <button class="auth-button" id="btnRegister">Регистрация</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Модальное окно авторизации -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" data-close="login">&times;</span>
+            <h2>Авторизация</h2>
+            <form id="loginForm">
+                <label for="loginUsername">Имя пользователя</label>
+                <input type="text" id="loginUsername" name="loginUsername" required>
+                <label for="loginPassword">Пароль</label>
+                <input type="password" id="loginPassword" name="loginPassword" required>
+                <button type="submit">Войти</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Модальное окно регистрации -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close" data-close="register">&times;</span>
+            <h2>Регистрация</h2>
+            <form id="registerForm">
+                <label for="registerUsername">Имя пользователя</label>
+                <input type="text" id="registerUsername" name="registerUsername" required>
+                <label for="registerEmail">Email</label>
+                <input type="email" id="registerEmail" name="registerEmail" required>
+                <label for="registerPassword">Пароль</label>
+                <input type="password" id="registerPassword" name="registerPassword" required>
+                <label for="registerConfirmPassword">Подтвердите пароль</label>
+                <input type="password" id="registerConfirmPassword" name="registerConfirmPassword" required>
+                <button type="submit">Зарегистрироваться</button>
+            </form>
+        </div>
+    </div>
+
+    <main>
+        <div class="page-title">
+            <h1><i class="fas fa-book"></i> Документация</h1>
+        </div>
+        <div class="documentation-container">
+            <!-- Введение -->
+            <section class="documentation-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-info-circle"></i> Введение</h2>
+                </div>
+                <div class="section-content">
+                    <p>
+                        Добро пожаловать в документацию <strong>Unified Network</strong>! Здесь вы найдете информацию о
+                        том, как пользоваться нашим веб-приложением для управления ИТ-активами.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Начало работы -->
+            <section class="documentation-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-rocket"></i> Начало работы</h2>
+                </div>
+                <div class="section-content">
+                    <p>
+                        Чтобы начать работу с <strong>Unified Network</strong>, выполните следующие шаги:
+                    </p>
+                    <ol>
+                        <li>Зарегистрируйтесь или авторизуйтесь в системе.</li>
+                        <li>После успешной авторизации вы попадете на главную страницу приложения.</li>
+                        <li>Используйте меню для навигации по разделам приложения.</li>
+                    </ol>
+                </div>
+            </section>
+
+            <!-- Добавление устройств -->
+            <section class="documentation-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-plus-circle"></i> Добавление устройств</h2>
+                </div>
+                <div class="section-content">
+                    <p>
+                        Чтобы добавить новое устройство:
+                    </p>
+                    <ol>
+                        <li>Перейдите на страницу <strong>"Добавить устройство"</strong>.</li>
+                        <li>Заполните форму, указав имя устройства, IP-адрес, MAC-адрес и тип устройства.</li>
+                        <li>Нажмите кнопку <strong>"Добавить устройство"</strong>.</li>
+                    </ol>
+                    <p>
+                        После добавления устройство появится в списке устройств и будет доступно для управления.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Управление устройствами -->
+            <section class="documentation-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-cog"></i> Управление устройствами</h2>
+                </div>
+                <div class="section-content">
+                    <p>
+                        На странице <strong>"Информация об устройствах"</strong> вы можете:
+                    </p>
+                    <ul>
+                        <li>Просматривать список всех добавленных устройств.</li>
+                        <li>Просматривать детальную информацию об устройстве, включая статус, технические характеристики
+                            и метрики производительности.</li>
+                        <li>Удалять устройства из системы.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Учет программного обеспечения -->
+            <section class="documentation-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-list-alt"></i> Учет программного обеспечения</h2>
+                </div>
+                <div class="section-content">
+                    <p>
+                        На странице <strong>"Учёт ПО"</strong> вы можете:
+                    </p>
+                    <ul>
+                        <li>Просматривать список установленного программного обеспечения на устройствах.</li>
+                        <li>Добавлять и удалять записи о программном обеспечении.</li>
+                    </ul>
+                    <p>
+                        Учет программного обеспечения доступен только для устройств типов <code>Сервер</code> и
+                        <code>Рабочая станция</code>.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Сетевая карта -->
+            <section class="documentation-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-network-wired"></i> Сетевая карта</h2>
+                </div>
+                <div class="section-content">
+                    <p>
+                        На странице <strong>"Сетевая карта"</strong> вы можете:
+                    </p>
+                    <ul>
+                        <li>Визуализировать сетевую топологию.</li>
+                        <li>Добавлять и удалять устройства на карте.</li>
+                        <li>Создавать и удалять связи между устройствами.</li>
+                        <li>Сохранять и загружать состояние сетевой карты.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Техническая поддержка -->
+            <section class="documentation-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-headset"></i> Техническая поддержка</h2>
+                </div>
+                <div class="section-content">
+                    <p>
+                        Если у вас возникли вопросы или проблемы, свяжитесь с нашей службой поддержки:
+                    </p>
+                    <ul>
+                        <li>Электронная почта: <a href="mailto:rkutarayev@mail.ru">rkutaraev@mail.ru</a></li>
+                        <li>Телефон: +7 (916) 659-23-32</li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+        <button id="scrollToTopBtn" aria-label="Наверх">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-wrapper">
+                <div class="footer-row">
+                    <div class="footer-col">
+                        <div class="footer-info">
+                            <div class="footer-info-item">
+                                <span class="main-footer-copyright-item">© 2025 Unified Network</span>
+                            </div>
+                            <div class="footer-info-item">
+                                <a href="#" class="footer-link">Техподдержка: +7 (916) 659 23-32</a>
+                            </div>
+                            <div class="footer-info-item">
+                                <a href="mailto:rkutarayev@mail.ru" class="footer-link">rkutaraev@mail.ru</a>
+                            </div>
+                            <div class="footer-info-item">
+                                <a href="privacy_policy_authentication.html" class="footer-link">Политика
+                                    конфиденциальности</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Кнопка "Наверх"
+        const scrollBtn = document.getElementById('scrollToTopBtn');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollBtn.classList.add('show');
+            } else {
+                scrollBtn.classList.remove('show');
+            }
+        });
+
+        scrollBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Обработка модальных окон авторизации и регистрации
+        document.addEventListener('DOMContentLoaded', () => {
+            const loginBtn = document.getElementById('btnLogin');
+            const registerBtn = document.getElementById('btnRegister');
+            const loginModal = document.getElementById('loginModal');
+            const registerModal = document.getElementById('registerModal');
+
+            // Открытие модальных окон
+            loginBtn.onclick = () => {
+                loginModal.style.display = 'flex';
+            };
+
+            registerBtn.onclick = () => {
+                registerModal.style.display = 'flex';
+            };
+
+            // Закрытие по клику на крестик
+            document.querySelectorAll('.close').forEach(span => {
+                span.onclick = () => {
+                    const target = span.dataset.close;
+                    if (target === 'login') {
+                        loginModal.style.display = 'none';
+                    } else if (target === 'register') {
+                        registerModal.style.display = 'none';
+                    }
+                };
+            });
+
+            // Закрытие по клику за пределами окна
+            window.onclick = (event) => {
+                if (event.target === loginModal) {
+                    loginModal.style.display = 'none';
+                } else if (event.target === registerModal) {
+                    registerModal.style.display = 'none';
+                }
+            };
+
+            // Обработка формы регистрации
+            document.getElementById('registerForm').addEventListener('submit', async (event) => {
+                event.preventDefault();
+                const username = document.getElementById('registerUsername').value;
+                const email = document.getElementById('registerEmail').value;
+                const password = document.getElementById('registerPassword').value;
+                try {
+                    const response = await fetch('http://localhost:8081/api/auth/register', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ username, email, password }),
+                    });
+                    if (!response.ok) {
+                        const errorData = await response.text();
+                        throw new Error(errorData || 'Ошибка регистрации');
+                    }
+                    alert('Регистрация успешна! Теперь вы можете войти.');
+                    registerModal.style.display = 'none';
+                    document.getElementById('registerForm').reset();
+                } catch (error) {
+                    console.error('Ошибка:', error);
+                    alert('Ошибка при регистрации: ' + error.message);
+                }
+            });
+
+            // Обработка формы авторизации
+            document.getElementById('loginForm').addEventListener('submit', async (event) => {
+                event.preventDefault();
+                const username = document.getElementById('loginUsername').value;
+                const password = document.getElementById('loginPassword').value;
+                try {
+                    const response = await fetch('http://localhost:8081/api/auth/login', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ username, password }),
+                    });
+                    if (!response.ok) {
+                        const errorData = await response.text();
+                        throw new Error(errorData || 'Ошибка авторизации');
+                    }
+                    const data = await response.json();
+                    localStorage.setItem('authToken', data.token);
+                    alert('Авторизация успешна!');
+                    window.location.href = '../main pages/main_window.html';
+                } catch (error) {
+                    console.error('Ошибка:', error);
+                    alert('Ошибка при авторизации: ' + error.message);
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

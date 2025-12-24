@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/repeat style/header_style.css">
+    <link rel="stylesheet" href="../css/repeat style/footer_style.css">
+    <link rel="stylesheet" href="../css/page style/add_device_style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Unified Network/Добавить устройство</title>
+</head>
+
+<body>
+    <header>
+        <div class="logo-and-name">
+            <img src="../img/logo.svg" alt="logo" class="logo" />
+            <span class="title">Unified Network</span>
+        </div>
+        <nav class="nav-bar">
+            <ul>
+                <li><a class="list-bar active" href="add_device.html">Добавить устройство</a></li>
+                <li><a class="list-bar" href="main_window.html">Информация об устройствах</a></li>
+                <li><a class="list-bar" href="accounting_by.html">Учёт ПО</a></li>
+                <li><a class="list-bar" href="network_card.html">Сетевая карта</a></li>
+            </ul>
+        </nav>
+        <div class="language-and-exit">
+            <button class="btn-exit-acc" id="logoutButton">Выйти из аккаунта</button>
+        </div>
+    </header>
+    <main>
+        <div class="page-title">
+            <h1><i class="fas fa-plus-circle"></i> Добавить устройство</h1>
+        </div>
+        <div class="device-container">
+            <!-- Инструкция по добавлению устройств -->
+            <section class="instructions-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-book"></i> Как добавить устройство</h2>
+                </div>
+                <div class="instructions-content">
+                    <div class="instruction-step">
+                        <div class="step-icon">
+                            <i class="fas fa-edit"></i>
+                        </div>
+                        <div class="step-content">
+                            <h3>Заполните форму</h3>
+                            <p>Укажите имя устройства, его IP-адрес, MAC-адрес и выберите тип устройства из списка.</p>
+                        </div>
+                    </div>
+                    <div class="instruction-step">
+                        <div class="step-icon">
+                            <i class="fas fa-save"></i>
+                        </div>
+                        <div class="step-content">
+                            <h3>Сохраните устройство</h3>
+                            <p>Нажмите "Добавить устройство", чтобы сохранить его в системе.</p>
+                        </div>
+                    </div>
+                    <div class="important-info">
+                        <div class="info-icon">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                        <div class="info-content">
+                            <h3>Важная информация</h3>
+                            <p>Добавленные устройства автоматически становятся доступны на других страницах:</p>
+                            <ul>
+                                <li><strong>Информация об устройствах</strong> — подробные данные и статус.</li>
+                                <li><strong>Учёт программного обеспечения</strong> — управление ПО на устройстве.</li>
+                                <li><strong>Сетевая карта</strong> — визуализация расположения устройств.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Форма добавления устройства -->
+            <section class="device-add-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-laptop"></i> Добавить устройство</h2>
+                </div>
+                <form id="addDeviceForm" class="add-device-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="deviceName"><i class="fas fa-tag"></i> Имя устройства</label>
+                            <input type="text" id="deviceName" name="deviceName"
+                                placeholder="Например, Сервер базы данных" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="ipAddress"><i class="fas fa-network-wired"></i> IP-адрес</label>
+                            <input type="text" id="ipAddress" name="ipAddress" placeholder="Например, 192.168.1.1"
+                                required
+                                pattern="^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$"
+                                title="Введите корректный IP-адрес">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="macAddress"><i class="fas fa-fingerprint"></i> MAC-адрес</label>
+                            <input type="text" id="macAddress" name="macAddress"
+                                placeholder="Например, 00:1A:2B:3C:4D:5E">
+                        </div>
+                        <div class="form-group">
+                            <label for="deviceType"><i class="fas fa-tags"></i> Тип устройства</label>
+                            <select id="deviceType" name="deviceType" required>
+                                <option value="" disabled selected>Выберите тип</option>
+                                <option value="server">Сервер</option>
+                                <option value="printer">Принтер</option>
+                                <option value="router">Маршрутизатор</option>
+                                <option value="switch">Коммутатор</option>
+                                <option value="workstation">Рабочая станция</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn-add"><i class="fas fa-save"></i> Добавить устройство</button>
+                    </div>
+                </form>
+            </section>
+            <!-- Список устройств -->
+            <section class="device-list-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-list"></i> Список добавленных устройств</h2>
+                    <div class="search-container">
+                        <div class="search-filter">
+                            <input type="text" id="searchDevice" placeholder="Поиск по имени или IP...">
+                            <i class="fas fa-search"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="device-list-container">
+                    <ul id="deviceList" class="device-list">
+                        <!-- Устройства будут добавлены динамически -->
+                    </ul>
+                </div>
+            </section>
+        </div>
+        <button id="scrollToTopBtn" aria-label="Наверх">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+    </main>
+    <footer class="main-footer">
+        <div class="container">
+            <div class="main-footer-top">
+                <div class="main-footer-row">
+                    <div class="main-footer-col">
+                        <div class="main-footer-logo-is-desktop">
+                            <span class="main-footer-logo-is-desktop1">Unified Network</span>
+                        </div>
+                        <div class="main-footer-info">
+                            <div class="main-footer-info-item">
+                                <a href="#">Техподдержка: +7 (916) 659 23-32</a>
+                            </div>
+                            <div class="main-footer-info-item">
+                                <a href="mailto:rkutarayev@mail.ru" class="main-footer-info-link">rkutaraev@mail.ru</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main-footer-nav-col">
+                        <div class="main-footer-nav-head">
+                            <div class="main-footer-nav-title">Ресурсы</div>
+                        </div>
+                        <div class="main-footer-nav-body">
+                            <ul class="main-footer-nav-list">
+                                <li class="main-footer-nav-item"><a
+                                        href="../material additional/about_development_main.html"
+                                        class="main-footer-nav-link">О
+                                        разработке</a></li>
+                                <li class="main-footer-nav-item"><a href="../material additional/features_main.html"
+                                        class="main-footer-nav-link">Возможности</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="main-footer-nav-col">
+                        <div class="main-footer-nav-head">
+                            <div class="main-footer-nav-title">Поддержка</div>
+                        </div>
+                        <div class="main-footer-nav-body">
+                            <ul class="main-footer-nav-list">
+                                <li class="main-footer-nav-item"><a
+                                        href="../material additional/documentation_main.html"
+                                        class="main-footer-nav-link">Документация</a></li>
+                                <li class="main-footer-nav-item"><a href="#" id="copyContactsLink"
+                                        class="main-footer-nav-link">Контакты</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main-footer-bot">
+                <div class="main-footer-copyright">
+                    <div class="main-footer-copyright-item">© 2025 Unified Network</div>
+                </div>
+                <nav class="main-footer-bot-nav">
+                    <div class="main-footer-bot-nav-item">
+                        <a href="../material additional/privacy_policy_main.html"
+                            class="main-footer-bot-nav-link">Политика конфиденциальности</a>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </footer>
+    <!-- JavaScript для работы с формой и списком устройств -->
+    <script>
+        // Выход из аккаунта
+        document.getElementById('logoutButton').addEventListener('click', (event) => {
+            event.preventDefault();
+            localStorage.removeItem('authToken');
+            window.location.href = '../authentication/authentication_main.html';
+        });
+
+        // Проверка токена при загрузке страницы
+        document.addEventListener('DOMContentLoaded', () => {
+            const token = localStorage.getItem('authToken');
+            if (!token) {
+                alert('Вы не авторизованы! Перенаправляем на страницу авторизации.');
+                window.location.href = '../authentication/authentication_main.html';
+            }
+        });
+
+        // Добавление устройства
+        document.getElementById('addDeviceForm').addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const deviceName = document.getElementById('deviceName').value;
+            const ipAddress = document.getElementById('ipAddress').value;
+            const macAddress = document.getElementById('macAddress').value;
+            const deviceType = document.getElementById('deviceType').value;
+
+            try {
+                const response = await fetch('http://localhost:8081/api/devices/add', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+                    },
+                    body: JSON.stringify({
+                        name: deviceName,
+                        ip: ipAddress,
+                        macAddress: macAddress,
+                        type: deviceType,
+                        status: 'Неактивно' // Устанавливаем статус "Неактивно" по умолчанию
+                    }),
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.error || 'Ошибка добавления устройства');
+                }
+
+                alert('Устройство успешно добавлено!');
+                loadDeviceList(); // Обновляем список устройств
+                document.getElementById('addDeviceForm').reset(); // Очищаем форму
+            } catch (error) {
+                console.error('Ошибка:', error);
+                alert('Ошибка при добавлении устройства: ' + error.message);
+            }
+        });
+
+
+        // Загрузка списка устройств
+        async function loadDeviceList() {
+            try {
+                const response = await fetch('http://localhost:8081/api/devices', {
+                    headers: {
+                        'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error('Ошибка загрузки списка устройств');
+                }
+
+                const devices = await response.json();
+                const deviceListElement = document.getElementById('deviceList');
+                deviceListElement.innerHTML = '';
+
+                devices.forEach(device => {
+                    const deviceItem = document.createElement('li');
+                    deviceItem.innerHTML = `
+                <span class="device-info">
+                    <i class="fas ${getDeviceIcon(device.type)}"></i>
+                    <span class="device-name">${device.name}</span>
+                    <span class="device-ip">${device.ip}</span>
+                </span>
+                <span class="device-status ${device.status === 'Активно' ? 'active' : 'inactive'}">
+                    <i class="fas fa-circle"></i> ${device.status || 'Неизвестно'}
+                </span>
+                <button class="delete-btn" data-ip="${device.ip}" aria-label="Удалить устройство">×</button>
+            `;
+
+                    deviceItem.addEventListener('click', (event) => {
+                        if (!event.target.classList.contains('delete-btn')) {
+                            showDeviceDetails(device);
+                        }
+                    });
+
+                    deviceListElement.appendChild(deviceItem);
+                });
+
+                // Добавляем обработчики удаления устройств после обновления списка
+                document.querySelectorAll('.delete-btn').forEach(button => {
+                    button.addEventListener('click', async (event) => {
+                        event.stopPropagation();
+                        const ip = event.target.getAttribute('data-ip');
+                        try {
+                            const response = await fetch(`http://localhost:8081/api/devices/delete?ip=${ip}`, {
+                                method: 'DELETE',
+                                headers: {
+                                    'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+                                }
+                            });
+
+                            const responseData = await response.json();
+
+                            if (!response.ok) {
+                                throw new Error(responseData.error || 'Ошибка удаления устройства');
+                            }
+
+                            alert(responseData.success || 'Устройство успешно удалено!');
+                            loadDeviceList(); // Обновляем список устройств
+                        } catch (error) {
+                            console.error('Ошибка:', error);
+                            alert('Ошибка при удалении устройства: ' + error.message);
+                        }
+                    });
+                });
+            } catch (error) {
+                console.error('Ошибка:', error);
+                alert('Ошибка при загрузке списка устройств: ' + error.message);
+            }
+        }
+
+        // Получение иконки для типа устройства
+        function getDeviceIcon(type) {
+            switch (type) {
+                case 'server': return 'fa-server';
+                case 'printer': return 'fa-print';
+                case 'router': return 'fa-router';
+                case 'switch': return 'fa-exchange-alt';
+                case 'workstation': return 'fa-desktop';
+                default: return 'fa-question-circle';
+            }
+        }
+
+        // Поиск устройств
+        document.getElementById('searchDevice').addEventListener('input', (event) => {
+            const searchTerm = event.target.value.toLowerCase();
+            const devices = document.querySelectorAll('#deviceList li');
+            devices.forEach(device => {
+                const deviceText = device.querySelector('.device-info').textContent.toLowerCase();
+                if (deviceText.includes(searchTerm)) {
+                    device.style.display = 'flex';
+                } else {
+                    device.style.display = 'none';
+                }
+            });
+        });
+
+        // Загружаем список устройств при загрузке страницы
+        document.addEventListener('DOMContentLoaded', () => {
+            loadDeviceList();
+        });
+
+        // Кнопка "Наверх"
+        const scrollBtn = document.getElementById('scrollToTopBtn');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollBtn.classList.add('show');
+            } else {
+                scrollBtn.classList.remove('show');
+            }
+        });
+        scrollBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        document.getElementById('copyContactsLink').addEventListener('click', (event) => {
+            event.preventDefault(); // Отменяем стандартное поведение ссылки
+
+            // Контакты для копирования
+            const contacts = "Техподдержка: +7 (916) 659 23-32\nEmail: rkutaraev@mail.ru";
+
+            // Копируем текст в буфер обмена
+            navigator.clipboard.writeText(contacts)
+                .then(() => {
+                    alert('Контакты скопированы в буфер обмена!');
+                })
+                .catch((error) => {
+                    console.error('Ошибка при копировании: ', error);
+                    alert('Не удалось скопировать контакты. Попробуйте ещё раз.');
+                });
+        });
+    </script>
+</body>
+
+</html>

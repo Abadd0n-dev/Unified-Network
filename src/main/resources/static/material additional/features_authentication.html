@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/repeat style/header_style.css">
+    <link rel="stylesheet" href="../css/repeat style/footer_style.css">
+    <link rel="stylesheet" href="../css/page style/features_style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Unified Network/Возможности</title>
+</head>
+
+<body>
+    <header>
+        <div class="logo-and-name">
+            <img src="../img/logo.svg" alt="logo" class="logo" />
+            <span class="title">Unified Network</span>
+        </div>
+        <nav class="nav-bar">
+            <ul>
+                <li><a class="list-bar" href="features_authentication.html">Возможности</a></li>
+                <li><a class="list-bar" href="about_development_authentication.html">О разработке</a></li>
+                <li><a class="list-bar" href="documentation_authentication.html">Документация</a></li>
+            </ul>
+        </nav>
+        <div class="language-and-exit">
+            <div class="auth-buttons-wrapper">
+                <button class="auth-button" id="btnLogin">Авторизация</button>
+                <button class="auth-button" id="btnRegister">Регистрация</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Модальное окно авторизации -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" data-close="login">&times;</span>
+            <h2>Авторизация</h2>
+            <form id="loginForm">
+                <label for="loginUsername">Имя пользователя</label>
+                <input type="text" id="loginUsername" name="loginUsername" required>
+                <label for="loginPassword">Пароль</label>
+                <input type="password" id="loginPassword" name="loginPassword" required>
+                <button type="submit">Войти</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Модальное окно регистрации -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close" data-close="register">&times;</span>
+            <h2>Регистрация</h2>
+            <form id="registerForm">
+                <label for="registerUsername">Имя пользователя</label>
+                <input type="text" id="registerUsername" name="registerUsername" required>
+                <label for="registerEmail">Email</label>
+                <input type="email" id="registerEmail" name="registerEmail" required>
+                <label for="registerPassword">Пароль</label>
+                <input type="password" id="registerPassword" name="registerPassword" required>
+                <label for="registerConfirmPassword">Подтвердите пароль</label>
+                <input type="password" id="registerConfirmPassword" name="registerConfirmPassword" required>
+                <button type="submit">Зарегистрироваться</button>
+            </form>
+        </div>
+    </div>
+
+    <main>
+        <div class="page-title">
+            <h1><i class="fas fa-cogs"></i> Возможности Unified Network</h1>
+        </div>
+
+        <!-- Учёт устройств -->
+        <section class="feature-section">
+            <h2><i class="fas fa-server"></i> Учёт устройств</h2>
+            <p>
+                Unified Network позволяет добавлять и классифицировать устройства по типам: серверы, рабочие станции,
+                принтеры, маршрутизаторы и коммутаторы.
+                Каждое устройство регистрируется по IP-адресу, MAC-адресу и другим уникальным параметрам.
+            </p>
+
+            <div class="image-container">
+                <img src="../img/scr1.png" alt="description_add_device" class="feature-image">
+            </div>
+
+            <div class="feature-steps">
+                <div class="feature-step">
+                    <div class="step-icon">
+                        <i class="fas fa-plus-circle"></i>
+                    </div>
+                    <div class="step-content">
+                        <h3>Добавление устройства</h3>
+                        <p>Заполните форму с основными параметрами: имя устройства, IP-адрес, MAC-адрес и тип
+                            устройства.</p>
+                    </div>
+                </div>
+
+                <div class="feature-step">
+                    <div class="step-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="step-content">
+                        <h3>Подтверждение</h3>
+                        <p>Сохраните устройство кнопкой "Добавить устройство".</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Мониторинг статуса -->
+        <section class="feature-section">
+            <h2><i class="fas fa-chart-line"></i> Мониторинг статуса</h2>
+            <p>
+                Отслеживайте состояние устройств (онлайн/офлайн), загрузку процессора, использование памяти и дискового
+                пространства.
+                Система предоставляет актуальные данные о каждом устройстве в реальном времени.
+            </p>
+
+            <div class="image-container">
+                <img src="../img/scr3.png" alt="description_add_device" class="feature-image">
+            </div>
+
+
+            <div class="feature-steps">
+                <div class="feature-step">
+                    <div class="step-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <div class="step-content">
+                        <h3>Загрузка процессора</h3>
+                        <p>Просматривайте текущую загрузку процессора каждого устройства.</p>
+                    </div>
+                </div>
+
+                <div class="feature-step">
+                    <div class="step-icon">
+                        <i class="fas fa-memory"></i>
+                    </div>
+                    <div class="step-content">
+                        <h3>Использование памяти</h3>
+                        <p>Отслеживайте использование оперативной памяти.</p>
+                    </div>
+                </div>
+
+                <div class="feature-step">
+                    <div class="step-icon">
+                        <i class="fas fa-hdd"></i>
+                    </div>
+                    <div class="step-content">
+                        <h3>Дисковое пространство</h3>
+                        <p>Контролируйте использование дискового пространства.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Учёт программного обеспечения -->
+        <section class="feature-section">
+            <h2><i class="fas fa-list-alt"></i> Учёт программного обеспечения</h2>
+            <p>
+                Ведение списка установленного программного обеспечения для серверов и рабочих станций.
+                Вы можете управлять версиями, издателями и датами установки каждого приложения.
+            </p>
+
+            <div class="image-container">
+                <img src="../img/scr5.png" alt="description_add_device" class="feature-image">
+            </div>
+
+            <div class="feature-steps">
+                <div class="feature-step">
+                    <div class="step-icon">
+                        <i class="fas fa-list-ul"></i>
+                    </div>
+                    <div class="step-content">
+                        <h3>Список ПО</h3>
+                        <p>Просматривайте список установленного программного обеспечения на каждом устройстве.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Сетевая карта -->
+        <section class="feature-section">
+            <h2><i class="fas fa-network-wired"></i> Сетевая карта</h2>
+            <p>
+                Визуализация расположения устройств и их связей в корпоративной сети.
+                Вы можете добавлять устройства на карту, создавать связи между ними и сохранять текущую конфигурацию.
+            </p>
+
+            <div class="image-container">
+                <img src="../img/scr4.png" alt="description_add_device" class="feature-image">
+            </div>
+
+            <div class="feature-steps">
+                <div class="feature-step">
+                    <div class="step-icon">
+                        <i class="fas fa-plus-square"></i>
+                    </div>
+                    <div class="step-content">
+                        <h3>Добавление устройств</h3>
+                        <p>Добавьте устройства на сетевую карту.</p>
+                    </div>
+                </div>
+
+                <div class="feature-step">
+                    <div class="step-icon">
+                        <i class="fas fa-link"></i>
+                    </div>
+                    <div class="step-content">
+                        <h3>Создание связей</h3>
+                        <p>Создайте связи между устройствами.</p>
+                    </div>
+                </div>
+
+                <div class="feature-step">
+                    <div class="step-icon">
+                        <i class="fas fa-save"></i>
+                    </div>
+                    <div class="step-content">
+                        <h3>Сохранение конфигурации</h3>
+                        <p>Сохраните текущую конфигурацию сетевой карты.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <button id="scrollToTopBtn" aria-label="Наверх">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-wrapper">
+                <div class="footer-row">
+                    <div class="footer-col">
+                        <div class="footer-info">
+                            <div class="footer-info-item">
+                                <span class="main-footer-copyright-item">© 2025 Unified Network</span>
+                            </div>
+                            <div class="footer-info-item">
+                                <a href="#" class="footer-link">Техподдержка: +7 (916) 659 23-32</a>
+                            </div>
+                            <div class="footer-info-item">
+                                <a href="mailto:rkutarayev@mail.ru" class="footer-link">rkutaraev@mail.ru</a>
+                            </div>
+                            <div class="footer-info-item">
+                                <a href="privacy_policy_authentication.html" class="footer-link">Политика
+                                    конфиденциальности</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Кнопка "Наверх"
+        const scrollBtn = document.getElementById('scrollToTopBtn');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollBtn.classList.add('show');
+            } else {
+                scrollBtn.classList.remove('show');
+            }
+        });
+
+        scrollBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Обработка модальных окон авторизации и регистрации
+        document.addEventListener('DOMContentLoaded', () => {
+            const loginBtn = document.getElementById('btnLogin');
+            const registerBtn = document.getElementById('btnRegister');
+            const loginModal = document.getElementById('loginModal');
+            const registerModal = document.getElementById('registerModal');
+
+            // Открытие модальных окон
+            loginBtn.onclick = () => {
+                loginModal.style.display = 'flex';
+            };
+
+            registerBtn.onclick = () => {
+                registerModal.style.display = 'flex';
+            };
+
+            // Закрытие по клику на крестик
+            document.querySelectorAll('.close').forEach(span => {
+                span.onclick = () => {
+                    const target = span.dataset.close;
+                    if (target === 'login') {
+                        loginModal.style.display = 'none';
+                    } else if (target === 'register') {
+                        registerModal.style.display = 'none';
+                    }
+                };
+            });
+
+            // Закрытие по клику за пределами окна
+            window.onclick = (event) => {
+                if (event.target === loginModal) {
+                    loginModal.style.display = 'none';
+                } else if (event.target === registerModal) {
+                    registerModal.style.display = 'none';
+                }
+            };
+
+            // Обработка формы регистрации
+            document.getElementById('registerForm').addEventListener('submit', async (event) => {
+                event.preventDefault();
+                const username = document.getElementById('registerUsername').value;
+                const email = document.getElementById('registerEmail').value;
+                const password = document.getElementById('registerPassword').value;
+                try {
+                    const response = await fetch('http://localhost:8081/api/auth/register', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ username, email, password }),
+                    });
+                    if (!response.ok) {
+                        const errorData = await response.text();
+                        throw new Error(errorData || 'Ошибка регистрации');
+                    }
+                    alert('Регистрация успешна! Теперь вы можете войти.');
+                    registerModal.style.display = 'none';
+                    document.getElementById('registerForm').reset();
+                } catch (error) {
+                    console.error('Ошибка:', error);
+                    alert('Ошибка при регистрации: ' + error.message);
+                }
+            });
+
+            // Обработка формы авторизации
+            document.getElementById('loginForm').addEventListener('submit', async (event) => {
+                event.preventDefault();
+                const username = document.getElementById('loginUsername').value;
+                const password = document.getElementById('loginPassword').value;
+                try {
+                    const response = await fetch('http://localhost:8081/api/auth/login', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ username, password }),
+                    });
+                    if (!response.ok) {
+                        const errorData = await response.text();
+                        throw new Error(errorData || 'Ошибка авторизации');
+                    }
+                    const data = await response.json();
+                    localStorage.setItem('authToken', data.token);
+                    alert('Авторизация успешна!');
+                    window.location.href = '../main pages/main_window.html';
+                } catch (error) {
+                    console.error('Ошибка:', error);
+                    alert('Ошибка при авторизации: ' + error.message);
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,443 @@
+/* Основные стили */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f7fa;
+    color: #333;
+}
+
+main {
+    max-width: 1400px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+/* Заголовок страницы */
+.page-title {
+    margin-bottom: 30px;
+    padding: 15px 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.page-title h1 {
+    margin: 0;
+    color: #2c3e50;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.page-title h1 i {
+    color: #7e4ba0;
+}
+
+/* Контейнер для списка устройств и информации */
+.device-container {
+    display: flex;
+    gap: 25px;
+}
+
+/* Список устройств */
+.device-list-section {
+    width: 35%;
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+}
+
+.section-header {
+    margin-bottom: 20px;
+}
+
+.section-header h2 {
+    color: #2c3e50;
+    font-size: 20px;
+    margin: 0 0 10px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Поисковая строка */
+.search-filter {
+    position: relative;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.search-filter input {
+    width: 100%;
+    padding: 10px 10px 10px 35px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.search-filter i {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #aaa;
+}
+
+/* Контейнер списка устройств */
+.device-list-container {
+    flex: 1;
+    max-height: calc(70vh - 100px);
+    overflow-y: auto;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    padding: 10px;
+}
+
+.device-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.device-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    border-radius: 4px;
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    background-color: #f8f9fa;
+}
+
+.device-list li:hover {
+    background-color: #e9ecef;
+}
+
+.device-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+}
+
+.device-name {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.device-ip {
+    color: #666;
+    font-size: 14px;
+}
+
+.device-info i {
+    color: #7e4ba0;
+}
+
+.device-status {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.device-status i {
+    font-size: 8px;
+}
+
+.device-status.active {
+    color: #28a745;
+}
+
+.device-status.inactive {
+    color: #dc3545;
+}
+
+/* Подробная информация об устройстве */
+.device-details-section {
+    width: 65%;
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.device-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.tab-button {
+    padding: 10px 15px;
+    background: none;
+    border: none;
+    color: #666;
+    cursor: pointer;
+    font-size: 14px;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s;
+}
+
+.tab-button.active {
+    color: #7e4ba0;
+    border-bottom: 2px solid #7e4ba0;
+    font-weight: bold;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Обзор устройства */
+.device-overview {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.overview-row {
+    display: flex;
+    gap: 20px;
+}
+
+.overview-item {
+    flex: 1;
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 4px solid #7e4ba0;
+}
+
+.overview-item-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.overview-item-header i {
+    color: #7e4ba0;
+}
+
+.overview-item h4 {
+    color: #2c3e50;
+    font-size: 16px;
+    margin: 0;
+}
+
+.overview-item p {
+    color: #333;
+    margin: 0;
+    font-weight: 500;
+}
+
+/* Метрики производительности */
+.performance-metrics {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.metric-container {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 4px solid #7e4ba0;
+}
+
+.metric-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.metric-header h4 {
+    color: #2c3e50;
+    font-size: 16px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.metric-header h4 i {
+    color: #7e4ba0;
+}
+
+.metric-value p {
+    color: #333;
+    margin: 0;
+    font-weight: 500;
+}
+
+/* Сетевые метрики */
+.network-metrics {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.network-row {
+    display: flex;
+    gap: 20px;
+}
+
+.network-item {
+    flex: 1;
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 4px solid #7e4ba0;
+}
+
+.network-item-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.network-item-header i {
+    color: #7e4ba0;
+}
+
+.network-item h4 {
+    color: #2c3e50;
+    font-size: 16px;
+    margin: 0;
+}
+
+.network-item p {
+    color: #333;
+    margin: 0;
+    font-weight: 500;
+}
+
+/* Системная информация */
+.system-info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.system-row {
+    display: flex;
+    gap: 20px;
+}
+
+.system-item {
+    flex: 1;
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 4px solid #7e4ba0;
+}
+
+.system-item-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.system-item-header i {
+    color: #7e4ba0;
+}
+
+.system-item h4 {
+    color: #2c3e50;
+    font-size: 16px;
+    margin: 0;
+}
+
+.system-item p {
+    color: #333;
+    margin: 0;
+    font-weight: 500;
+}
+
+/* Кнопка "Наверх" */
+#scrollToTopBtn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: #7e4ba0;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: opacity 0.3s;
+    z-index: 1000;
+}
+
+#scrollToTopBtn.show {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.progress-bar-container {
+    width: 100%;
+    background-color: #e9ecef;
+    border-radius: 4px;
+    margin: 10px 0;
+    height: 10px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: #7e4ba0;
+    transition: width 0.5s ease;
+}
+
+.doughnut-chart-container {
+    position: relative;
+    width: 100%;
+    height: 100px;
+    margin: 10px 0;
+}
+
+/* Адаптивность */
+@media (max-width: 1200px) {
+    .device-container {
+        flex-direction: column;
+    }
+
+    .device-list-section,
+    .device-details-section {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .overview-row,
+    .network-row,
+    .system-row {
+        flex-direction: column;
+        gap: 10px;
+    }
+}

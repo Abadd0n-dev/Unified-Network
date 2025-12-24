@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/repeat style/header_style.css">
+    <link rel="stylesheet" href="../css/repeat style/footer_style.css">
+    <link rel="stylesheet" href="../css/page style/features_style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Unified Network/Возможности</title>
+</head>
+
+<body>
+    <header>
+        <div class="logo-and-name">
+            <img src="../img/logo.svg" alt="logo" class="logo" />
+            <span class="title">Unified Network</span>
+        </div>
+        <nav class="nav-bar">
+            <ul>
+                <li><a class="list-bar" href="../main pages/add_device.html">Добавить устройство</a></li>
+                <li><a class="list-bar" href="../main pages/main_window.html">Информация об устройствах</a></li>
+                <li><a class="list-bar" href="../main pages/accounting_by.html">Учёт ПО</a></li>
+                <li><a class="list-bar" href="../main pages/network_card.html">Сетевая карта</a></li>
+            </ul>
+        </nav>
+        <div class="language-and-exit">
+            <button class="btn-exit-acc" id="logoutButton">Выйти из аккаунта</button>
+        </div>
+    </header>
+
+    <main>
+        <div class="page-title">
+            <h1><i class="fas fa-cogs"></i> Возможности Unified Network</h1>
+        </div>
+
+        <!-- Учёт устройств -->
+        <section class="feature-section">
+            <h2><i class="fas fa-server"></i> Учёт устройств</h2>
+            <p>
+                Unified Network позволяет добавлять и классифицировать устройства по типам: серверы, рабочие станции,
+                принтеры, маршрутизаторы и коммутаторы.
+                Каждое устройство регистрируется по IP-адресу, MAC-адресу и другим уникальным параметрам.
+            </p>
+
+            <div class="image-container">
+                <img src="../img/scr1.png" alt="description_add_device" class="feature-image">
+            </div>
+
+            <div class="feature-steps">
+                <div class="feature-step">
+                    <div class="step-icon">
+                        <i class="fas fa-plus-circle"></i>
+                    </div>
+                    <div class="step-content">
+                        <h3>Добавление устройства</h3>
+                        <p>Заполните форму с основными параметрами: имя устройства, IP-адрес, MAC-адрес и тип
+                            устройства.</p>
+                    </div>
+                </div>
+
+                <div class="feature-step">
+                    <div class="step-icon">
+                        <i class="fas fa-save"></i>
+                    </div>
+                    <div class="step-content">
+                        <h3>Сохранение данных</h3>
+                        <p>Нажмите "Собрать данные", чтобы автоматически получить информацию о процессоре, памяти и
+                            операционной системе.</p>
+                    </div>
+                </div>
+
+                <div class="feature-step">
+                    <div class="step-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="step-content">
+                        <h3>Подтверждение</h3>
+                        <p>Сохраните устройство кнопкой "Добавить устройство".</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Мониторинг статуса -->
+        <section class="feature-section">
+            <h2><i class="fas fa-chart-line"></i> Мониторинг статуса</h2>
+            <p>
+                Отслеживайте состояние устройств (онлайн/офлайн), загрузку процессора, использование памяти и дискового
+                пространства.
+                Система предоставляет актуальные данные о каждом устройстве в реальном времени.
+            </p>
+
+            <div class="image-container">
+                <img src="../img/scr3.png" alt="description_information" class="feature-image">
+            </div>
+
+            <div class="feature-steps">
+                <div class="feature-step">
+                    <div class="step-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <div class="step-content">
+                        <h3>Загрузка процессора</h3>
+                        <p>Просматривайте текущую загрузку процессора каждого устройства.</p>
+                    </div>
+                </div>
+
+                <div class="feature-step">
+                    <div class="step-icon">
+                        <i class="fas fa-memory"></i>
+                    </div>
+                    <div class="step-content">
+                        <h3>Использование памяти</h3>
+                        <p>Отслеживайте использование оперативной памяти.</p>
+                    </div>
+                </div>
+
+                <div class="feature-step">
+                    <div class="step-icon">
+                        <i class="fas fa-hdd"></i>
+                    </div>
+                    <div class="step-content">
+                        <h3>Дисковое пространство</h3>
+                        <p>Контролируйте использование дискового пространства.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Учёт программного обеспечения -->
+        <section class="feature-section">
+            <h2><i class="fas fa-list-alt"></i> Учёт программного обеспечения</h2>
+            <p>
+                Ведение списка установленного программного обеспечения для серверов и рабочих станций.
+                Вы можете управлять версиями, издателями и датами установки каждого приложения.
+            </p>
+
+            <div class="image-container">
+                <img src="../img/scr5.png" alt="description_accounting_by" class="feature-image">
+            </div>
+
+            <div class="feature-steps">
+                <div class="feature-step">
+                    <div class="step-icon">
+                        <i class="fas fa-list-ul"></i>
+                    </div>
+                    <div class="step-content">
+                        <h3>Список ПО</h3>
+                        <p>Просматривайте список установленного программного обеспечения на каждом устройстве.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Сетевая карта -->
+        <section class="feature-section">
+            <h2><i class="fas fa-network-wired"></i> Сетевая карта</h2>
+            <p>
+                Визуализация расположения устройств и их связей в корпоративной сети.
+                Вы можете добавлять устройства на карту, создавать связи между ними и сохранять текущую конфигурацию.
+            </p>
+
+            <div class="image-container">
+                <img src="../img/scr4.png" alt="desciption_network_map" class="feature-image">
+            </div>
+
+            <div class="feature-steps">
+                <div class="feature-step">
+                    <div class="step-icon">
+                        <i class="fas fa-plus-square"></i>
+                    </div>
+                    <div class="step-content">
+                        <h3>Добавление устройств</h3>
+                        <p>Добавьте устройства на сетевую карту.</p>
+                    </div>
+                </div>
+
+                <div class="feature-step">
+                    <div class="step-icon">
+                        <i class="fas fa-link"></i>
+                    </div>
+                    <div class="step-content">
+                        <h3>Создание связей</h3>
+                        <p>Создайте связи между устройствами.</p>
+                    </div>
+                </div>
+
+                <div class="feature-step">
+                    <div class="step-icon">
+                        <i class="fas fa-save"></i>
+                    </div>
+                    <div class="step-content">
+                        <h3>Сохранение конфигурации</h3>
+                        <p>Сохраните текущую конфигурацию сетевой карты.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <button id="scrollToTopBtn" aria-label="Наверх">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="main-footer-top">
+                <div class="main-footer-row">
+                    <div class="main-footer-col">
+                        <div class="main-footer-logo-is-desktop">
+                            <span class="main-footer-logo-is-desktop1">Unified Network</span>
+                        </div>
+                        <div class="main-footer-info">
+                            <div class="main-footer-info-item">
+                                <a href="#">Техподдержка: +7 (916) 659 23-32</a>
+                            </div>
+                            <div class="main-footer-info-item">
+                                <a href="mailto:rkutarayev@mail.ru" class="main-footer-info-link">rkutaraev@mail.ru</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main-footer-nav-col">
+                        <div class="main-footer-nav-head">
+                            <div class="main-footer-nav-title">Ресурсы</div>
+                        </div>
+                        <div class="main-footer-nav-body">
+                            <ul class="main-footer-nav-list">
+                                <li class="main-footer-nav-item"><a href="about_development_main.html"
+                                        class="main-footer-nav-link">О
+                                        разработке</a></li>
+                                <li class="main-footer-nav-item"><a href="features_authentication.html"
+                                        class="main-footer-nav-link">Возможности</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="main-footer-nav-col">
+                        <div class="main-footer-nav-head">
+                            <div class="main-footer-nav-title">Поддержка</div>
+                        </div>
+                        <div class="main-footer-nav-body">
+                            <ul class="main-footer-nav-list">
+                                <li class="main-footer-nav-item"><a href="#"
+                                        class="main-footer-nav-link">Документация</a></li>
+                                <li class="main-footer-nav-item"><a href="#" id="copyContactsLink"
+                                        class="main-footer-nav-link">Контакты</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main-footer-bot">
+                <div class="main-footer-copyright">
+                    <div class="main-footer-copyright-item">© 2025 Unified Network</div>
+                </div>
+                <nav class="main-footer-bot-nav">
+                    <div class="main-footer-bot-nav-item">
+                        <a href="privacy_policy_main.html" class="main-footer-bot-nav-link">Политика
+                            конфиденциальности</a>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Кнопка "Наверх"
+        const scrollBtn = document.getElementById('scrollToTopBtn');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollBtn.classList.add('show');
+            } else {
+                scrollBtn.classList.remove('show');
+            }
+        });
+
+        scrollBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Выход из аккаунта
+        document.getElementById('logoutButton').addEventListener('click', (event) => {
+            event.preventDefault();
+            localStorage.removeItem('authToken');
+            window.location.href = '../authentication/authentication_main.html';
+        });
+
+        document.getElementById('copyContactsLink').addEventListener('click', (event) => {
+            event.preventDefault(); // Отменяем стандартное поведение ссылки
+
+            // Контакты для копирования
+            const contacts = "Техподдержка: +7 (916) 659 23-32\nEmail: rkutaraev@mail.ru";
+
+            // Копируем текст в буфер обмена
+            navigator.clipboard.writeText(contacts)
+                .then(() => {
+                    alert('Контакты скопированы в буфер обмена!');
+                })
+                .catch((error) => {
+                    console.error('Ошибка при копировании: ', error);
+                    alert('Не удалось скопировать контакты. Попробуйте ещё раз.');
+                });
+        });
+    </script>
+</body>
+
+</html>
